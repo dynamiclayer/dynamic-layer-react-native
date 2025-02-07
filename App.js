@@ -1,6 +1,5 @@
 // App.js
 import React, { useEffect } from 'react';
-import { AuthProvider } from './src/AuthContext';
 import AppNavigator from './src/navigation/AppNavigator';
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts, Inter_300Light, Inter_400Regular, Inter_500Medium, Inter_600SemiBold, Inter_700Bold } from '@expo-google-fonts/inter';
@@ -31,9 +30,7 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={styles.container}>
-      <AuthProvider>
         <AppNavigator />
-      </AuthProvider>
     </GestureHandlerRootView>
 
   );

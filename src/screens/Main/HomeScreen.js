@@ -12,14 +12,6 @@ export default function HomeScreen() {
           <Text style={styles.headerText}>Home</Text>
         </View>
         <View style={styles.cardsContainer}>
-          {/* Bottom Navigation */}
-          <ComponentCard
-            status={"Complete"}
-            title={"Bottom Navigation"}
-            description={"Component"}
-            screenName={"BottomNavigationScreen"}
-          />
-
           {/* Button */}
           <ComponentCard
             status={"Complete"}
@@ -28,52 +20,20 @@ export default function HomeScreen() {
             screenName={"ButtonScreen"}
           />
 
-          {/* Input Field */}
+          {/* Button Icon */}
           <ComponentCard
             status={"Complete"}
-            title={"Input Field"}
+            title={"Button Icon"}
             description={"Component"}
-            screenName={"InputFieldScreen"}
+            screenName={"ButtonIconScreen"}
           />
 
-          {/* Pin Page */}
+          {/* Button Dock */}
           <ComponentCard
-            status={"Complete"}
-            title={"Chip"}
+            status={"Fehlt"}
+            title={"Button Dock"}
             description={"Component"}
-            screenName={"ChipScreen"}
-          />
-
-          {/* Loading Page */}
-          <ComponentCard
-            status={"Complete"}
-            title={"Loading"}
-            description={"Component"}
-            screenName={"LoadingScreen"}
-          />
-
-          {/* Top Navigation */}
-          <ComponentCard
-            status={"Complete"}
-            title={"Top Navigation"}
-            description={"Component"}
-            screenName={"TopNavigationScreen"}
-          />
-
-          {/* Badge */}
-          <ComponentCard
-            status={"In Progress"}
-            title={"Badge"}
-            description={"Component"}
-            screenName={"BadgeScreen"}
-          />
-
-          {/* Teaser */}
-          <ComponentCard
-            status={"Complete"}
-            title={"Teaser"}
-            description={"Component"}
-            screenName={"TeaserScreen"}
+            screenName={"ButtonScreen"}
           />
 
           {/* Notification Badge */}
@@ -84,20 +44,36 @@ export default function HomeScreen() {
             screenName={"NotificationBadgeScreen"}
           />
 
-          {/* Notification Badge */}
+          {/* Bottom Navigation */}
           <ComponentCard
             status={"Complete"}
-            title={"Textarea"}
+            title={"Bottom Navigation"}
             description={"Component"}
-            screenName={"CustomTextAreaScreen"}
+            screenName={"BottomNavigationScreen"}
           />
 
-          {/* Bottom Sheet */}
+          {/* Card */}
           <ComponentCard
-            status={"In Progress"}
-            title={"Bottom Sheet"}
+            status={"Fehlt"}
+            title={"Card"}
             description={"Component"}
-            screenName={"BottomSheetScreen"}
+            screenName={"BottomNavigationScreen"}
+          />
+
+          {/* Input Field */}
+          <ComponentCard
+            status={"Complete"}
+            title={"Input Field"}
+            description={"Component"}
+            screenName={"InputFieldScreen"}
+          />
+
+          {/* Top Navigation */}
+          <ComponentCard
+            status={"Complete"}
+            title={"Top Navigation"}
+            description={"Component"}
+            screenName={"TopNavigationScreen"}
           />
 
         </View>

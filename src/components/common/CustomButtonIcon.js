@@ -12,11 +12,6 @@ const typeStyles = {
     borderColor: colors.grey200,
     textColor: colors.black,
   },
-  ghost: {
-    backgroundColor: colors.transparent,
-    textColor: colors.violet500,
-    textDecorationLine: "underline",
-  },
 };
 
 const stateStyles = {
@@ -24,39 +19,35 @@ const stateStyles = {
     primary: { backgroundColor: colors.violet500 },
     secondary: { backgroundColor: colors.grey800 },
     tertiary: { backgroundColor: colors.white, borderWidth: 1, borderColor: colors.grey200 },
-    ghost: { backgroundColor: colors.transparent, textColor: colors.violet500 },
   },
   hover: {
     primary: { backgroundColor: colors.violet600 },
     secondary: { backgroundColor: colors.grey900 },
     tertiary: { backgroundColor: colors.grey50 },
-    ghost: { backgroundColor: colors.transparent, textColor: colors.violet600 },
   },
   pressed: {
     primary: { backgroundColor: colors.violet700 },
     secondary: { backgroundColor: colors.black },
     tertiary: { backgroundColor: colors.grey100 },
-    ghost: { backgroundColor: colors.transparent, textColor: colors.violet700 },
   },
   disabled: {
     primary: { backgroundColor: colors.grey100, textColor: colors.grey600 },
     secondary: { backgroundColor: colors.grey100, textColor: colors.grey600 },
     tertiary: { backgroundColor: colors.white, textColor: colors.grey500, borderColor: colors.grey500, borderWidth: 1 },
-    ghost: { backgroundColor: colors.transparent, textColor: colors.grey500 },
+
   },
   loading: {
     primary: { backgroundColor: colors.violet500 },
     secondary: { backgroundColor: colors.grey800 },
     tertiary: { backgroundColor: colors.white },
-    ghost: { backgroundColor: colors.transparent, textColor: colors.violet500 },
   },
 };
 
 const sizeStyles = {
-  1: { height: 32, paddingHorizontal: paddings.p_12 },
-  2: { height: 40, paddingHorizontal: paddings.p_16 },
-  3: { height: 48, paddingHorizontal: paddings.p_16 },
-  4: { height: 56, paddingHorizontal: paddings.p_24 },
+  1: { height: 32, padding: paddings.p_4 },
+  2: { height: 40, padding: paddings.p_8 },
+  3: { height: 48, padding: paddings.p_12 },
+  4: { height: 56, padding: paddings.p_16 },
 };
 
 const getCombinedStyles = (type, state, size) => {
@@ -71,36 +62,32 @@ const getCombinedStyles = (type, state, size) => {
   };
 };
 
-const CustomButton = ({
+const CustomButtonIcon = ({
   containerStyle,
   onPress,
-  text = "",
   type = "secondary",
   size = 4,
-  leftIcon,
-  rightIcon,
-  loading = false,
+  icon,
   disabled = false,
-  scaling = "full",
 }) => {
   const [buttonState, setButtonState] = useState('default');
-  const state = loading ? 'loading' : (disabled ? 'disabled' : buttonState);
+  const state = disabled ? 'disabled' : buttonState;
   const combinedStyles = getCombinedStyles(type, state, size);
 
   const handlePressIn = () => {
-    if (!disabled && !loading) {
+    if (!disabled) {
       setButtonState('pressed');
     }
   };
 
   const handlePressOut = () => {
-    if (!disabled && !loading) {
+    if (!disabled) {
       setButtonState('default');
     }
   };
 
   const handlePress = () => {
-    if (!disabled && !loading && onPress) {
+    if (!disabled && onPress) {
       onPress();
     }
   };
@@ -113,42 +100,28 @@ const CustomButton = ({
           height: combinedStyles.height,
           borderWidth: combinedStyles.borderWidth || 0,
           borderColor: combinedStyles.borderColor || "transparent",
-          paddingHorizontal: combinedStyles.paddingHorizontal,
+          padding: combinedStyles.padding,
           borderRadius: rounded.rounded_md,
           alignItems: "center",
           justifyContent: "center",
-          ...(scaling === "full" ? { flexGrow: 1 } : { alignSelf: "flex-start" }),
           maxHeight: combinedStyles.height,
+          maxWidth: combinedStyles.height
         },
         containerStyle,
       ]}
       onPress={handlePress}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
-      disabled={disabled || loading}
+      disabled={disabled}
     >
       <View style={styles.contentContainer}>
-        {leftIcon && <View style={styles.iconLeft}>{leftIcon}</View>}
-        {loading ? (
-          <View style={styles.loadingContainer}>
-            <LoadingDots />
-          </View>
-        ) : (
-          <Text style={[styles.text, { color: combinedStyles.textColor, textDecorationLine: combinedStyles.textDecorationLine || "none" }]}>
-            {text}
-          </Text>
-        )}
-        {rightIcon && <View style={styles.iconRight}>{rightIcon}</View>}
+        {icon && <View style={styles.icon}>{icon}</View>}
       </View>
     </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
-  text: {
-    ...textStyles.text_base_bold,
-    textAlign: "center",
-  },
   contentContainer: {
     flexDirection: "row",
     alignItems: "center",
@@ -160,12 +133,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  iconLeft: {
-    marginRight: 8,
-  },
-  iconRight: {
-    marginLeft: 8,
+  icon: {
   },
 });
 
-export default CustomButton;
+export default CustomButtonIcon;

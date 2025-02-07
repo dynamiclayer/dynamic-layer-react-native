@@ -447,41 +447,6 @@ export const paddings = {
   p_96: 96,
 }
 
-{/*
-  
-  const { width, height } = Dimensions.get('window');
-
-// Example of scaling based on width (you can also scale based on height if needed)
-const scaleFactor = width / 450; // 375 is the base width, adjust as needed
-
-const responsivePadding = (size) => Math.round(size * scaleFactor);
-
-export const paddings = {
-  p_0: responsivePadding(0),
-  p_2: responsivePadding(2),
-  p_4: responsivePadding(4),
-  p_8: responsivePadding(8),
-  p_12: responsivePadding(12),
-  p_16: responsivePadding(16),
-  p_20: responsivePadding(20),
-  p_24: responsivePadding(24),
-  p_28: responsivePadding(28),
-  p_32: responsivePadding(32),
-  p_36: responsivePadding(36),
-  p_40: responsivePadding(40),
-  p_44: responsivePadding(44),
-  p_48: responsivePadding(48),
-  p_56: responsivePadding(56),
-  p_64: responsivePadding(64),
-  p_80: responsivePadding(80),
-  p_96: responsivePadding(96),
-};
-*/}
-
-
-
-
-
 export const colors = {
   white:   '#FFFFFF',
   black:   '#000000',
@@ -537,7 +502,6 @@ export const colors = {
   green900: "#0C5B11",
   green950: "#003305",
   //#endregion
-  
   //#region Violet
   violet50: "#F5F2FF",
   violet100: "#ECE8FF",
