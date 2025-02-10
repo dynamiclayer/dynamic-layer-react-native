@@ -1,0 +1,147 @@
+import React from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { colors, paddings, textStyles } from '../../style';
+import CustomCard from '../../components/common/CustomCard';
+import PlaceholderIcon from '../../../assets/icons/svg_js/placeholderIcon';
+
+const CustomCardScreen = () => {
+    return (
+        <ScrollView style={styles.container}>
+            {/* SIZE SECTION */}
+            <Text style={{ ...textStyles.text_lg_semibold, paddingBottom: paddings.p_8 }}>Size</Text>
+            <Text
+                style={{
+                    ...textStyles.text_sm_regular,
+                    color: colors.grey500,
+                    paddingBottom: paddings.p_32,
+                }}
+            >
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
+            </Text>
+            <View style={styles.sectionContainer}>
+                <View style={styles.rowContainer}>
+                    <View style={styles.itemContainer}>
+                        <CustomCard
+                            iconSource={<PlaceholderIcon />}
+                            title="Title"
+                            description="Description"
+                            size="md"
+                            state="active" // Standard: aktive Darstellung
+                        />
+                    </View>
+                    <View style={styles.itemContainer}>
+                        <CustomCard
+                            iconSource={<PlaceholderIcon />}
+                            title="Title"
+                            description="Description"
+                            size="lg"
+                            state="active"
+                        />
+                    </View>
+                </View>
+            </View>
+
+            {/* STATE SECTION */}
+            <Text style={{ ...textStyles.text_lg_semibold, paddingBottom: paddings.p_8 }}>State</Text>
+            <Text
+                style={{
+                    ...textStyles.text_sm_regular,
+                    color: colors.grey500,
+                    paddingBottom: paddings.p_32,
+                }}
+            >
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
+            </Text>
+            <View style={styles.sectionContainer}>
+                <View style={styles.rowContainer}>
+                    <View style={styles.itemContainer}>
+                        <CustomCard
+                            iconSource={<PlaceholderIcon />}
+                            title="Title"
+                            description="Description"
+                            size="lg"
+                            state="active"
+                        />
+                    </View>
+                    <View style={styles.itemContainer}>
+                        <CustomCard
+                            iconSource={<PlaceholderIcon />}
+                            title="Title"
+                            description="Description"
+                            size="lg"
+                            state="default"
+                        />
+                    </View>
+                    <View style={styles.itemContainer}>
+                        <CustomCard
+                            iconSource={<PlaceholderIcon />}
+                            title="Title"
+                            description="Description"
+                            size="lg"
+                            state="disabled"
+                        />
+                    </View>
+                </View>
+            </View>
+
+            {/* DESCRIPTION TOGGLE SECTION */}
+            <Text style={{ ...textStyles.text_lg_semibold, paddingBottom: paddings.p_8 }}>Description Toggle</Text>
+            <Text
+                style={{
+                    ...textStyles.text_sm_regular,
+                    color: colors.grey500,
+                    paddingBottom: paddings.p_32,
+                }}
+            >
+                You can edit the description with a true or false parameter (disable or enable the description).
+            </Text>
+            <View style={styles.sectionContainer}>
+                <View style={styles.rowContainer}>
+                    <View style={styles.itemContainer}>
+                        <CustomCard
+                            iconSource={<PlaceholderIcon />}
+                            title="Title"
+                            description="Description"
+                            size="lg"
+                            state="active"
+                            showDescription={true}
+                        />
+                    </View>
+                    <View style={styles.itemContainer}>
+                        <CustomCard
+                            iconSource={<PlaceholderIcon />}
+                            title="Title"
+                            description="Description"
+                            size="lg"
+                            state="active"
+                            showDescription={false}
+                        />
+                    </View>
+                </View>
+            </View>
+        </ScrollView>
+    );
+};
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        paddingHorizontal: paddings.p_16,
+        paddingVertical: paddings.p_32,
+        marginBottom: paddings.p_32,
+        backgroundColor: colors.white,
+    },
+    sectionContainer: {
+        marginBottom: paddings.p_32,
+    },
+    rowContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap', // Ermöglicht Zeilenumbruch, falls Karten nicht in eine Zeile passen
+        gap: paddings.p_16,
+    },
+    itemContainer: {
+        marginRight: paddings.p_16,
+    },
+});
+
+export default CustomCardScreen;

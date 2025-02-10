@@ -14,13 +14,15 @@ import BottomNavigationScreen from '../screens/PreviewScreens/bottomNavigationSc
 import InputFieldScreen from '../screens/PreviewScreens/inputFieldScreen';
 import TopNavigationScreen from '../screens/PreviewScreens/topNavigationScreen';
 import NotificationBadgeScreen from '../screens/PreviewScreens/notificationBadgeScreen';
+import ButtonIconScreen from '../screens/PreviewScreens/buttonIconScreen';
+import CustomCardScreen from '../screens/PreviewScreens/customCardScreen';
 
 // Icons
 import HomeIcon from '../../assets/icons/Navigation/homeIcon';
 import TemplatesIcon from '../../assets/icons/Navigation/templateIcon';
 import SettingsIcon from '../../assets/icons/Navigation/settingsIcon';
 import BackIcon from '../../assets/icons/svg_js/backIcon';
-import ButtonIconScreen from '../screens/PreviewScreens/buttonIconScreen';
+
 
 const MainStack = createNativeStackNavigator();
 
@@ -59,6 +61,7 @@ function MainStackScreen() {
       <MainStack.Screen name="InputFieldScreen" component={InputFieldScreen} options={{ title: "Input Field" }} />
       <MainStack.Screen name="TopNavigationScreen" component={TopNavigationScreen} options={{ title: "Top Navigation" }} />
       <MainStack.Screen name="NotificationBadgeScreen" component={NotificationBadgeScreen} options={{ title: "Notification badge" }} />
+      <MainStack.Screen name='CustomCardScreen' component={CustomCardScreen} options={{ title: 'Custom Card' }} />
     </MainStack.Navigator>
   );
 }

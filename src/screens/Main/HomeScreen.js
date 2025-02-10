@@ -2,9 +2,18 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors, paddings, textStyles } from '../../style';
-import ComponentCard from '../../components/common/ComponentCard';
+import CustomCard from '../../components/common/CustomCard';
+import { useNavigation } from '@react-navigation/native';
+import PlaceholderIcon from '../../../assets/icons/svg_js/placeholderIcon';
+import CheckCircleIcon from '../../../assets/icons/svg_js/checkCircleIcon';
 
 export default function HomeScreen() {
+  const navigation = useNavigation();
+
+  const changePage = (screenName) => {
+    navigation.navigate(screenName);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -13,69 +22,76 @@ export default function HomeScreen() {
         </View>
         <View style={styles.cardsContainer}>
           {/* Button */}
-          <ComponentCard
-            status={"Complete"}
-            title={"Button"}
-            description={"Component"}
-            screenName={"ButtonScreen"}
+          <CustomCard
+            iconSource={<CheckCircleIcon />}
+            title="Button"
+            description="Component"
+            size="lg"
+            onPress={() => changePage("ButtonScreen")}
           />
 
           {/* Button Icon */}
-          <ComponentCard
-            status={"Complete"}
-            title={"Button Icon"}
-            description={"Component"}
-            screenName={"ButtonIconScreen"}
+          <CustomCard
+            iconSource={<CheckCircleIcon />}
+            title="Button Icon"
+            description="Component"
+            size="lg"
+            onPress={() => changePage("ButtonIconScreen")}
           />
 
           {/* Button Dock */}
-          <ComponentCard
-            status={"Fehlt"}
-            title={"Button Dock"}
-            description={"Component"}
-            screenName={"ButtonScreen"}
+          <CustomCard
+            iconSource={<PlaceholderIcon />}
+            title="Button Dock"
+            description="Component"
+            size="lg"
+            onPress={() => changePage("ButtonScreen")}
           />
 
           {/* Notification Badge */}
-          <ComponentCard
-            status={"Complete"}
-            title={"Notification badge"}
-            description={"Component"}
-            screenName={"NotificationBadgeScreen"}
+          <CustomCard
+            iconSource={<CheckCircleIcon />}
+            title="Notification Badge"
+            description="Component"
+            size="lg"
+            onPress={() => changePage("NotificationBadgeScreen")}
           />
 
           {/* Bottom Navigation */}
-          <ComponentCard
-            status={"Complete"}
-            title={"Bottom Navigation"}
-            description={"Component"}
-            screenName={"BottomNavigationScreen"}
+          <CustomCard
+            iconSource={<CheckCircleIcon />}
+            title="Bottom Navigation"
+            description="Component"
+            size="lg"
+            onPress={() => changePage("BottomNavigationScreen")}
           />
 
           {/* Card */}
-          <ComponentCard
-            status={"Fehlt"}
-            title={"Card"}
-            description={"Component"}
-            screenName={"BottomNavigationScreen"}
+          <CustomCard
+            iconSource={<CheckCircleIcon />}
+            title="Card"
+            description="Component"
+            size="lg"
+            onPress={() => changePage("CustomCardScreen")}
           />
 
           {/* Input Field */}
-          <ComponentCard
-            status={"Complete"}
-            title={"Input Field"}
-            description={"Component"}
-            screenName={"InputFieldScreen"}
+          <CustomCard
+            iconSource={<CheckCircleIcon />}
+            title="Input Field"
+            description="Component"
+            size="lg"
+            onPress={() => changePage("InputFieldScreen")}
           />
 
           {/* Top Navigation */}
-          <ComponentCard
-            status={"Complete"}
-            title={"Top Navigation"}
-            description={"Component"}
-            screenName={"TopNavigationScreen"}
+          <CustomCard
+            iconSource={<CheckCircleIcon />}
+            title="Top Navigation"
+            description="Component"
+            size="lg"
+            onPress={() => changePage("TopNavigationScreen")}
           />
-
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -102,6 +118,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: '100%',
-    justifyContent: "space-between",
+    justifyContent: "space-around",
+    gap: 16
   },
 });
