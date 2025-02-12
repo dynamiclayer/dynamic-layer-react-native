@@ -1,47 +1,93 @@
-import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { colors, paddings, textStyles } from '../../style';
 import CustomButton from '../../components/common/CustomButton';
-import CustomIcon from '../../../assets/icons/svg_js/customIcon';
-import { ScrollView } from 'react-native-gesture-handler';
-import CustomButtonIcon from '../../components/common/CustomButtonIcon';
 import CustomButtonDock from '../../components/common/CustomButtonDock';
 
 const ButtonDockScreen = () => {
     return (
-        <ScrollView style={styles.container}>
-            {/* TYPE */}
-            <Text style={{ ...textStyles.text_lg_semibold, paddingBottom: paddings.p_8 }}>Type</Text>
-            <Text style={{ ...textStyles.text_sm_regular, color: colors.grey500, paddingBottom: paddings.p_32 }}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</Text>
-            <View style={styles.buttonContainer}>
-                    <CustomButtonDock 
+        // Der äußere Container nimmt den ganzen Screen ein.
+        <View style={styles.screen}>
+            {/* Scrollbarer Inhalt */}
+            <ScrollView
+                style={styles.container}
+                contentContainerStyle={styles.scrollContent} // Extra bottom-Padding, damit nichts vom Dock überdeckt wird.
+            >
+                {/* TYPE */}
+                <Text style={{ ...textStyles.text_lg_semibold, paddingBottom: paddings.p_8 }}>Count</Text>
+                <Text
+                    style={{
+                        ...textStyles.text_sm_regular,
+                        color: colors.grey500,
+                        paddingBottom: paddings.p_32,
+                    }}
+                >
+                    The count changes dynamically based on the button Count (min 1, max 2)
+                </Text>
+                <View style={{ height: 89 }}>
+                    <CustomButtonDock
                         firstButton={<CustomButton text="Primary" type="primary" />}
                     />
-            </View>
-        </ScrollView>
-    )
-}
+                </View>
+
+                <View style={{ marginTop: paddings.p_16, marginBottom: paddings.p_32, height: 161 }}>
+                    <CustomButtonDock
+                        firstButton={<CustomButton text="Primary" type="primary" />}
+                        secondButton={<CustomButton text="Secondary" type="secondary" />}
+                    />
+                </View>
+
+                {/* TYPE */}
+                <Text style={{ ...textStyles.text_lg_semibold, paddingBottom: paddings.p_8 }}>Direction</Text>
+                <Text
+                    style={{
+                        ...textStyles.text_sm_regular,
+                        color: colors.grey500,
+                        paddingBottom: paddings.p_32,
+                    }}
+                >
+                    You can edit the direction with the direction parameter. (options: horizontal, vertical, (default: vertical))
+                </Text>
+                <View style={{ height: 89 }}>
+                    <CustomButtonDock
+                        direction="horizontal"
+                        firstButton={<CustomButton text="Primary" type="primary" />}
+                        secondButton={<CustomButton text="Secondary" type="secondary" />}
+                    />
+                </View>
+
+
+            </ScrollView>
+            
+            {/* Der Button-Dock wird als absolutes Element am unteren Rand gerendert */}
+            <CustomButtonDock
+                direction="horizontal"
+                firstButton={<CustomButton text="Primary" type="primary" />}
+                secondButton={<CustomButton text="Secondary" type="secondary" />}
+            />
+        </View>
+    );
+};
 
 const styles = StyleSheet.create({
+    screen: {
+        flex: 1,
+    },
     container: {
         flex: 1,
+        backgroundColor: colors.white,
+    },
+    // contentContainerStyle des ScrollViews – wichtig: extra Padding am unteren Rand,
+    // damit der scrollbare Inhalt nicht vom Dock verdeckt wird.
+    scrollContent: {
         paddingHorizontal: paddings.p_16,
         paddingVertical: paddings.p_32,
-        backgroundColor: colors.white
+        paddingBottom: 89, // Hier evtl. anpassen, je nach Höhe deines Docks. Bei Horizontal mit dem Default button "89".
     },
     buttonContainer: {
         gap: paddings.p_16,
         paddingBottom: paddings.p_32,
     },
-    buttonRow: {
-        flexDirection: 'row',
-        gap: paddings.p_16,
-    },
-    buttonWrapper: {
-        width: "auto",
-        flexDirection: 'row',
-        gap: paddings.p_16,
-    },
 });
 
-export default ButtonDockScreen
+export default ButtonDockScreen;
