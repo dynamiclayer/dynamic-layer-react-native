@@ -3,6 +3,7 @@ import { Text, StyleSheet, View, Pressable } from "react-native";
 import { colors, paddings, rounded, textStyles } from '../../style';
 import LoadingDots from "../../animations/LoadingDots";
 
+// Define styles for different button types
 const typeStyles = {
   primary: { backgroundColor: colors.violet500, textColor: colors.white },
   secondary: { backgroundColor: colors.grey800, textColor: colors.white },
@@ -19,6 +20,7 @@ const typeStyles = {
   },
 };
 
+// Define styles for different button states
 const stateStyles = {
   default: {
     primary: { backgroundColor: colors.violet500 },
@@ -52,6 +54,7 @@ const stateStyles = {
   },
 };
 
+// Define styles for different button sizes
 const sizeStyles = {
   1: { height: 32, paddingHorizontal: paddings.p_12 },
   2: { height: 40, paddingHorizontal: paddings.p_16 },
@@ -59,10 +62,11 @@ const sizeStyles = {
   4: { height: 56, paddingHorizontal: paddings.p_24 },
 };
 
+// Function to combine styles based on type, state, and size
 const getCombinedStyles = (type, state, size) => {
-  const typeStyle = typeStyles[type];
-  const stateStyle = stateStyles[state]?.[type];
-  const sizeStyle = sizeStyles[size];
+  const typeStyle = typeStyles[type];             // Get styles based on button type
+  const stateStyle = stateStyles[state]?.[type];  // Get styles based on button state
+  const sizeStyle = sizeStyles[size];             // Get styles based on button size
 
   return {
     ...typeStyle,
@@ -71,28 +75,38 @@ const getCombinedStyles = (type, state, size) => {
   };
 };
 
+// --------------------------------------------
+// CustomButton component definition
+// --------------------------------------------
 const CustomButton = ({
-  containerStyle,
-  onPress,
-  text = "",
-  type = "secondary",
-  size = 4,
-  leftIcon,
-  rightIcon,
-  loading = false,
-  disabled = false,
-  scaling = "full",
+  containerStyle,     // Custom styles for the button container
+  onPress,            // Function to call when the button is pressed
+  text = "",          // Text to display on the button
+  type = "secondary", // Button type (primary, secondary, tertiary, ghost)
+  size = 4,           // Button size (1 to 4)
+  leftIcon,           // Icon to display on the left side of the button
+  rightIcon,          // Icon to display on the right side of the button
+  loading = false,    // Whether the button is in a loading state
+  disabled = false,   // Whether the button is disabled
+  scaling = "full",   // Scaling option for the button
 }) => {
+  // State to manage button state (default, pressed, etc.)
   const [buttonState, setButtonState] = useState('default');
-  const state = loading ? 'loading' : (disabled ? 'disabled' : buttonState);
-  const combinedStyles = getCombinedStyles(type, state, size);
+  const state = loading ? 'loading' : (disabled ? 'disabled' : buttonState); // Determine the current state of the button
+  const combinedStyles = getCombinedStyles(type, state, size); // Get the combined styles based on type, state, and size
 
+  // --------------------------------------------
+  // Handlers for button press events
+  // --------------------------------------------
+
+  // Set state to pressed when the button is pressed in
   const handlePressIn = () => {
     if (!disabled && !loading) {
       setButtonState('pressed');
     }
   };
 
+  // Set state to default when the button is released
   const handlePressOut = () => {
     if (!disabled && !loading) {
       setButtonState('default');
@@ -101,64 +115,68 @@ const CustomButton = ({
 
   const handlePress = () => {
     if (!disabled && !loading && onPress) {
-      onPress();
+      onPress(); // Call the onPress function when the button is pressed
     }
   };
 
+  // --------------------------------------------
+  // Render the button
+  // --------------------------------------------
   return (
     <Pressable
       style={[
         {
-          backgroundColor: combinedStyles.backgroundColor,
-          height: combinedStyles.height,
-          borderWidth: combinedStyles.borderWidth || 0,
-          borderColor: combinedStyles.borderColor || "transparent",
-          paddingHorizontal: combinedStyles.paddingHorizontal,
+          backgroundColor: combinedStyles.backgroundColor, // Set background color based on combined styles
+          height: combinedStyles.height, // Set height based on combined styles
+          borderWidth: combinedStyles.borderWidth || 0, // Set border width based on combined styles
+          borderColor: combinedStyles.borderColor || "transparent", // Set border color based on combined styles
+          paddingHorizontal: combinedStyles.paddingHorizontal, // Set horizontal padding based on combined styles
           borderRadius: rounded.rounded_md,
           alignItems: "center",
           justifyContent: "center",
-          ...(scaling === "full" ? { flexGrow: 1 } : { alignSelf: "flex-start" }),
-          maxHeight: combinedStyles.height,
+          ...(scaling === "full" ? { flexGrow: 1 } : { alignSelf: "flex-start" }), // Sets scaling based on `scaling`: `auto` adjusts to font size, otherwise it ajusts to the container.
+          maxHeight: combinedStyles.height, // Set max height based on combined styles
         },
-        containerStyle,
+        containerStyle, // Apply custom container styles
       ]}
-      onPress={handlePress}
-      onPressIn={handlePressIn}
-      onPressOut={handlePressOut}
-      disabled={disabled || loading}
+      onPress={handlePress} // Handle button press
+      onPressIn={handlePressIn} // Handle button press in
+      onPressOut={handlePressOut} // Handle button press out
+      disabled={disabled || loading} // Disable button if disabled or loading
     >
       <View style={styles.contentContainer}>
-        {leftIcon && <View style={styles.iconLeft}>{leftIcon}</View>}
+        {leftIcon && <View style={styles.iconLeft}>{leftIcon}</View>} {/* Render left icon if provided */}
         {loading ? (
           <View style={styles.loadingContainer}>
-            <LoadingDots />
+            <LoadingDots /> {/* Render loading dots if loading */}
           </View>
         ) : (
           <Text style={[styles.text, { color: combinedStyles.textColor, textDecorationLine: combinedStyles.textDecorationLine || "none" }]}>
-            {text}
+            {text} {/* Button Text */}
           </Text>
         )}
-        {rightIcon && <View style={styles.iconRight}>{rightIcon}</View>}
+        {rightIcon && <View style={styles.iconRight}>{rightIcon}</View>} {/* Render right icon if provided */}
       </View>
     </Pressable>
   );
 };
 
+// Styles for the button content
 const styles = StyleSheet.create({
   text: {
-    ...textStyles.text_base_bold,
-    textAlign: "center",
+    ...textStyles.text_base_bold, // Apply base bold text style
+    textAlign: "center",          // Center align text
   },
   contentContainer: {
-    flexDirection: "row",
+    flexDirection: "row",     // Arrange content in a row (needed for icons)
     alignItems: "center",
     justifyContent: "center",
-    height: "100%",
+    height: "100%"
   },
   loadingContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   iconLeft: {
     marginRight: 8,

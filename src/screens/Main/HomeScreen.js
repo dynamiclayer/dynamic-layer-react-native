@@ -4,7 +4,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors, paddings, textStyles } from '../../style';
 import CustomCard from '../../components/common/CustomCard';
 import { useNavigation } from '@react-navigation/native';
-import PlaceholderIcon from '../../../assets/icons/svg_js/placeholderIcon';
 import CheckCircleIcon from '../../../assets/icons/svg_js/checkCircleIcon';
 
 export default function HomeScreen() {
@@ -41,7 +40,7 @@ export default function HomeScreen() {
 
           {/* Button Dock */}
           <CustomCard
-            iconSource={<PlaceholderIcon />}
+            iconSource={<CheckCircleIcon />}
             title="Button Dock"
             description="Component"
             size="lg"

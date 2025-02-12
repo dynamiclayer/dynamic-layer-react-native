@@ -16,13 +16,13 @@ import TopNavigationScreen from '../screens/PreviewScreens/topNavigationScreen';
 import NotificationBadgeScreen from '../screens/PreviewScreens/notificationBadgeScreen';
 import ButtonIconScreen from '../screens/PreviewScreens/buttonIconScreen';
 import CustomCardScreen from '../screens/PreviewScreens/customCardScreen';
+import ButtonDockScreen from '../screens/PreviewScreens/buttonDockScreen';
 
 // Icons
 import HomeIcon from '../../assets/icons/Navigation/homeIcon';
 import TemplatesIcon from '../../assets/icons/Navigation/templateIcon';
 import SettingsIcon from '../../assets/icons/Navigation/settingsIcon';
 import BackIcon from '../../assets/icons/svg_js/backIcon';
-import ButtonDockScreen from '../screens/PreviewScreens/buttonDockScreen';
 
 
 const MainStack = createNativeStackNavigator();
