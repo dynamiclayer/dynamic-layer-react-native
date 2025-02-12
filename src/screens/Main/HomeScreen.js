@@ -45,7 +45,7 @@ export default function HomeScreen() {
             title="Button Dock"
             description="Component"
             size="lg"
-            onPress={() => changePage("ButtonScreen")}
+            onPress={() => changePage("CustomButtonDockScreen")}
           />
 
           {/* Notification Badge */}

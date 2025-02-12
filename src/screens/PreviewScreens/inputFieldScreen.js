@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
 import { colors, paddings, textStyles } from '../../style';
-import CustomInput from '../../components/inputs/CustomInput';
+import CustomInput from '../../components/common/CustomInput';
 import PlusIcon from '../../../assets/icons/svg_js/plusIcon';
 import { ScrollView } from 'react-native-gesture-handler';
 
