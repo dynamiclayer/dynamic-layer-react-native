@@ -2,18 +2,27 @@ import React from 'react';
 import { View, StyleSheet, Platform } from 'react-native';
 import { colors, paddings } from '../../style';
 
+/**
+ * CustomButtonDock Component
+ * A container component that displays buttons in a docked position at the bottom of the screen.
+ * Supports both vertical and horizontal button layouts.
+ *
+ * @param {string} direction - Layout direction for buttons: "vertical" or "horizontal"
+ * @param {React.ReactNode} firstButton - The first button component to display
+ * @param {React.ReactNode} secondButton - The second button component to display
+ */
 const CustomButtonDock = ({ direction = "vertical", firstButton, secondButton }) => {
   return (
     <View style={styles.overlay} pointerEvents="box-none">
       <View style={styles.bottomContainer} pointerEvents="box-none">
         <View style={[styles.dock, direction === "horizontal" ? styles.horizontal : styles.vertical]}>
           {firstButton && (
-            <View style={[styles.buttonWrapper, direction === "horizontal" && { flex: 1 }]}>
+            <View style={[direction === "horizontal" && { flex: 1 }]}>
               {firstButton}
             </View>
           )}
           {secondButton && (
-            <View style={[styles.buttonWrapper, direction === "horizontal" && { flex: 1 }]}>
+            <View style={[direction === "horizontal" && { flex: 1 }]}>
               {secondButton}
             </View>
           )}
@@ -23,6 +32,7 @@ const CustomButtonDock = ({ direction = "vertical", firstButton, secondButton })
   );
 };
 
+// Styles for the dock container and button layout
 const styles = StyleSheet.create({
   overlay: {
     position: 'absolute',
@@ -36,7 +46,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     pointerEvents: 'box-none',
-    
   },
   dock: {
     backgroundColor: colors.white,
@@ -52,9 +61,6 @@ const styles = StyleSheet.create({
   },
   vertical: {
     flexDirection: 'column',
-  },
-  buttonWrapper: {
-
   },
 });
 

@@ -2,18 +2,21 @@ import * as React from "react";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { colors, paddings, rounded, textStyles } from "../../style";
 
+/**
+ * CustomCard Component
+ * A versatile card component that can be used to display content with an icon, title, and description.
+ */
 const CustomCard = ({
-  iconSource = {},
-  title,
-  description,
-  size = "md", // "md" oder "lg"
-  state = "default", // State: "active", "default" oder "disabled"
-  showDescription = true, // Standardmäßig aktiv
-  onPress
+  iconSource = {}, // Icon source - can be an image or React component
+  title,          // Card title
+  description,    // Card description
+  size = "md",    // Card size: "md" (medium) or "lg" (large)
+  state = "default", // Card state: "active", "default", or "disabled"
+  showDescription = true, // Whether to show the description
+  onPress         // Function to call when card is pressed
 }) => {
-  // Bestimme den Container-Stil:
-  // Im active-Zustand wird der aktive Style genutzt,
-  // In default und disabled wird der Container-Style wie bei disabled angewandt.
+  // Determine container style based on state and size
+  // For active state, use active style; for default and disabled states, use disabled style
   const containerStyle =
     state === "active"
       ? size === "md"
@@ -23,18 +26,15 @@ const CustomCard = ({
       ? styles.cardMdDisabled
       : [styles.cardLgDisabled, !showDescription && { height: 92}];
 
-  // Beim Text: Nur im disabled-Zustand wird durchgestrichen.
+  // Apply text styles - strikethrough for disabled state only
   const titleStyle = [styles.title, state === "disabled" && styles.strikeThroughText];
   const descriptionStyle = [styles.description, state === "disabled" && styles.strikeThroughText];
-
-  // Text-Wrapper (für md bzw. lg)
+  // Text wrapper styles for medium and large sizes
   const textWrapperStyle = size === "md" ? styles.textWrapperMd : styles.textWrapperLg;
-
-  // Icon: Falls iconSource ein React-Element ist, setzen wir per cloneElement die Farbe auf Schwarz.
+  // Handle icon - if iconSource is a React element, clone it and set color to black
   const iconElement = React.isValidElement(iconSource)
     ? React.cloneElement(iconSource, { color: colors.black })
     : iconSource;
-
     return (
       <Pressable style={containerStyle} onPress={onPress}>
         <View style={[styles.iconContainer, size === "lg" && { alignSelf: "flex-start" }]}>
@@ -56,7 +56,7 @@ const CustomCard = ({
 
 const styles = StyleSheet.create({
   // -------------------------------
-  // Active Styles (voll aktiv)
+  // Active Styles
   // -------------------------------
   cardMdContainer: {
     gap: paddings.p_12,
@@ -84,10 +84,10 @@ const styles = StyleSheet.create({
     borderColor: colors.black,
   },
   // -------------------------------
-  // Disabled Styles (wie bisher)
+  // Disabled Styles
   // -------------------------------
-  // (Sowohl für default als auch disabled wird hier der Container-Stil genutzt –
-  // der Unterschied zeigt sich nur beim Text: bei disabled wird der Text durchgestrichen.)
+  // Used for both default and disabled states
+  // The only difference is text strikethrough in disabled state
   cardMdDisabled: {
     gap: paddings.p_12,
     padding: paddings.p_12,
@@ -112,7 +112,6 @@ const styles = StyleSheet.create({
     height: 112,
     borderWidth: 1,
     borderColor: colors.grey200,
-    
   },
   // -------------------------------
   // Icon-Container
@@ -147,7 +146,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     alignSelf: "stretch",
   },
-  // Durchgestrichener Text (nur im disabled-Zustand angewandt)
+  // Strikethrough text (only applied in the disabled state)
   strikeThroughText: {
     textDecorationLine: "line-through",
     color: colors.grey500,

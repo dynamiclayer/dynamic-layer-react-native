@@ -1,3 +1,4 @@
+// Import necessary modules and components
 import React, { useRef, useState, useCallback, useEffect } from "react";
 import {
   StyleSheet,
@@ -15,10 +16,32 @@ import EyeIcon from "../../../assets/icons/svg_js/eyeIcon";
 import EyeOffIcon from "../../../assets/icons/svg_js/eyeOffIcon";
 import DisabledIcon from "../../../assets/icons/svg_js/disabledIcon";
 
-// Helper component to conditionally render icons
+/**
+ * Helper component to conditionally render icons
+ * @param {boolean} condition - Whether to show the icon
+ * @param {React.ComponentType} IconComponent - The icon component to render
+ * @param {Object} style - Additional styles for the icon
+ */
 const Icon = ({ condition, IconComponent, style }) =>
   condition ? <IconComponent style={style} /> : null;
 
+/**
+ * CustomInput Component
+ * A versatile text input component with floating label, error states, and icon support
+ *
+ * @param {Object} containerStyle - Custom styles for the input container
+ * @param {string} placeholder - Placeholder text that becomes the floating label
+ * @param {Function} onChangeText - Callback when text changes
+ * @param {string} error - Error message to display
+ * @param {boolean} success - Whether the input is in a success state
+ * @param {boolean} disabled - Whether the input is disabled
+ * @param {React.ReactNode} leftIcon - Icon to display on the left side
+ * @param {React.ReactNode} rightIcon - Icon to display on the right side
+ * @param {Function} onEndEditing - Callback when editing ends
+ * @param {number} size - Input size (1-3)
+ * @param {string} value - Controlled input value
+ * @param {boolean} isHighlighted - Whether the input should be highlighted
+ */
 const CustomInput = ({
   containerStyle,
   placeholder,
@@ -34,6 +57,7 @@ const CustomInput = ({
   isHighlighted = false,
   ...props
 }) => {
+  // Size configurations for different input sizes
   const sizeOptions = {
     1: {
       height: 40,
@@ -57,6 +81,7 @@ const CustomInput = ({
   const { height, textNormalSize, paddingHorizontal, paddingVertical } =
     sizeOptions[size];
 
+  // State management
   const [isFocusedInternal, setIsFocusedInternal] = useState(false);
   const isFocused = isFocusedInternal || isHighlighted;
   const [showPassword, setShowPassword] = useState(props.secureTextEntry);
@@ -67,6 +92,7 @@ const CustomInput = ({
     new Animated.Value(currentValue ? 1 : 0)
   ).current;
 
+  // Animate the floating label
   const animatedLabel = (toValue) => {
     Animated.timing(labelPosition, {
       toValue,
@@ -75,10 +101,12 @@ const CustomInput = ({
     }).start();
   };
 
+  // Update label position when value or focus changes
   useEffect(() => {
     animatedLabel(currentValue ? 1 : isFocused ? 1 : 0);
   }, [currentValue, isFocused]);
 
+  // Handle focus events
   const handleFocus = useCallback(() => {
     if (!disabled) {
       setIsFocusedInternal(true);
@@ -86,6 +114,7 @@ const CustomInput = ({
     }
   }, [disabled]);
 
+  // Handle blur events
   const handleBlur = useCallback(() => {
     if (!disabled) {
       setIsFocusedInternal(false);
@@ -95,6 +124,7 @@ const CustomInput = ({
     }
   }, [disabled, currentValue, isHighlighted]);
 
+  // Handle text changes
   const handleTextChange = useCallback(
     (newText) => {
       if (onChangeText) onChangeText(newText);
@@ -119,6 +149,7 @@ const CustomInput = ({
   };
 
   return (
+    // Container for the input component
     <View
       style={[
         styles.innerContainer,
@@ -134,6 +165,7 @@ const CustomInput = ({
       ]}
     >
       <View style={{ flex: 1 }}>
+        {/* Animated floating label */}
         <Animated.Text
           style={[
             styles.label,
@@ -145,7 +177,9 @@ const CustomInput = ({
           {placeholder}
         </Animated.Text>
         <View style={styles.inputContainer}>
+          {/* Left icon if provided */}
           {leftIcon && <View>{leftIcon}</View>}
+          {/* Text input field */}
           <TextInput
             {...props}
             style={[
@@ -164,9 +198,11 @@ const CustomInput = ({
             secureTextEntry={showPassword}
             editable={!disabled}
           />
+          {/* Right icon if provided and not a secure text entry */}
           {rightIcon && !props.secureTextEntry && (
             <View style={styles.rightIconContainer}>{rightIcon}</View>
           )}
+          {/* Toggle password visibility for secure text entry */}
           {props.secureTextEntry && !disabled && (
             <TouchableOpacity
               style={styles.rightIconContainer}
@@ -175,23 +211,27 @@ const CustomInput = ({
               {showPassword ? <EyeOffIcon /> : <EyeIcon />}
             </TouchableOpacity>
           )}
+          {/* Error or success icon */}
           <Icon
             condition={!props.secureTextEntry && (error || success)}
             IconComponent={error ? ErrorIcon : SuccessIcon}
             style={styles.icon}
           />
+          {/* Disabled icon */}
           <Icon
             condition={disabled}
             IconComponent={DisabledIcon}
             style={styles.icon}
           />
         </View>
+        {/* Error message */}
         {error && <Text style={styles.errorText}>{error}</Text>}
       </View>
     </View>
   );
 };
 
+// Styles for the input component
 const styles = StyleSheet.create({
   innerContainer: {
     borderWidth: 1,

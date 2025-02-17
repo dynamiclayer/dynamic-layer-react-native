@@ -3,6 +3,10 @@ import { Text, StyleSheet, View, Pressable } from "react-native";
 import { colors, paddings, rounded, textStyles } from '../../style';
 import LoadingDots from "../../animations/LoadingDots";
 
+/**
+ * Style configurations for different button types
+ * Defines background colors, text colors, and border styles for each button type
+ */
 const typeStyles = {
   primary: { backgroundColor: colors.violet500, textColor: colors.white },
   secondary: { backgroundColor: colors.grey800, textColor: colors.white },
@@ -14,6 +18,10 @@ const typeStyles = {
   },
 };
 
+/**
+ * Style configurations for different button states
+ * Defines how buttons appear in different states: default, hover, pressed, disabled, loading
+ */
 const stateStyles = {
   default: {
     primary: { backgroundColor: colors.violet500 },
@@ -34,7 +42,6 @@ const stateStyles = {
     primary: { backgroundColor: colors.grey100, textColor: colors.grey600 },
     secondary: { backgroundColor: colors.grey100, textColor: colors.grey600 },
     tertiary: { backgroundColor: colors.white, textColor: colors.grey500, borderColor: colors.grey500, borderWidth: 1 },
-
   },
   loading: {
     primary: { backgroundColor: colors.violet500 },
@@ -43,6 +50,10 @@ const stateStyles = {
   },
 };
 
+/**
+ * Style configurations for different button sizes
+ * Defines height and padding for each size variant
+ */
 const sizeStyles = {
   1: { height: 32, padding: paddings.p_4 },
   2: { height: 40, padding: paddings.p_8 },
@@ -50,6 +61,13 @@ const sizeStyles = {
   4: { height: 56, padding: paddings.p_16 },
 };
 
+/**
+ * Combines styles based on button type, state, and size
+ * @param {string} type - Button type (primary, secondary, tertiary)
+ * @param {string} state - Button state (default, hover, pressed, disabled, loading)
+ * @param {number} size - Button size (1-4)
+ * @returns {Object} Combined style object
+ */
 const getCombinedStyles = (type, state, size) => {
   const typeStyle = typeStyles[type];
   const stateStyle = stateStyles[state]?.[type];
@@ -62,6 +80,17 @@ const getCombinedStyles = (type, state, size) => {
   };
 };
 
+/**
+ * CustomButtonIcon Component
+ * A button component that displays an icon with configurable styles and states
+ * 
+ * @param {Object} containerStyle - Custom styles for the button container
+ * @param {Function} onPress - Function to call when button is pressed
+ * @param {string} type - Button type: "primary", "secondary", or "tertiary"
+ * @param {number} size - Button size: 1 (smallest) to 4 (largest)
+ * @param {React.ReactNode} icon - Icon component to display
+ * @param {boolean} disabled - Whether the button is disabled
+ */
 const CustomButtonIcon = ({
   containerStyle,
   onPress,
@@ -74,6 +103,7 @@ const CustomButtonIcon = ({
   const state = disabled ? 'disabled' : buttonState;
   const combinedStyles = getCombinedStyles(type, state, size);
 
+  // Handle button press events
   const handlePressIn = () => {
     if (!disabled) {
       setButtonState('pressed');
@@ -111,13 +141,13 @@ const CustomButtonIcon = ({
       ]}
       onPress={handlePress}
       onPressIn={handlePressIn}
-      onPressOut={handlePressOut}
+      onPressOut={handlePressOut}      
       disabled={disabled}
-    >
-      <View style={styles.contentContainer}>
-        {icon && <View style={styles.icon}>{icon}</View>}
-      </View>
-    </Pressable>
+      >
+        <View style={styles.contentContainer}>
+          {icon && <View style={styles.icon}>{icon}</View>}
+        </View>
+      </Pressable>
   );
 };
 

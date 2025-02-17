@@ -2,14 +2,27 @@ import { View, Text, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
 import { colors, paddings, rounded, textStyles } from '../../style';
 
+/**
+ * NotificationBadge Component
+ * A versatile badge component that displays notification counts or indicators
+ * Supports medium (with count) and small (dot) sizes
+ *
+ * @param {string} size - Badge size: "md" (medium with count) or "sm" (small dot)
+ * @param {number} notifications - Number of notifications to display
+ * @param {boolean} positioning - Whether to apply automatic positioning transform
+ * @param {...Object} props - Additional props to pass to the container View
+ */
 const NotificationBadge = ({ size = "md", notifications, positioning = true, ...props }) => {
+  // Track badge width for positioning calculations
   const [badgeWidth, setBadgeWidth] = useState(0);
 
+  // Handle layout changes to update badge width
   const handleLayout = (event) => {
     const { width } = event.nativeEvent.layout;
     setBadgeWidth(width);
   };
 
+  // Render badge with appropriate styling and positioning
   const renderBadge = (style, transform) => (
     <View style={[style, { transform }]} onLayout={handleLayout}>
       <Text style={styles.notificationText}>{notifications}</Text>
@@ -27,6 +40,7 @@ const NotificationBadge = ({ size = "md", notifications, positioning = true, ...
   );
 };
 
+// Styles for different badge variants and states
 const styles = StyleSheet.create({
   notificationBadgeMD: {
     borderRadius: rounded.rounded_full,
