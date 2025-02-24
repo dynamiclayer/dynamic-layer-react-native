@@ -6,12 +6,10 @@ import CustomButtonDock from '../../components/common/CustomButtonDock';
 
 const ButtonDockScreen = () => {
     return (
-        // Der äußere Container nimmt den ganzen Screen ein.
         <View style={styles.screen}>
-            {/* Scrollbarer Inhalt */}
             <ScrollView
                 style={styles.container}
-                contentContainerStyle={styles.scrollContent} // Extra bottom-Padding, damit nichts vom Dock überdeckt wird.
+                contentContainerStyle={styles.scrollContent}
             >
                 {/* TYPE */}
                 <Text style={{ ...textStyles.text_lg_semibold, paddingBottom: paddings.p_8 }}>Count</Text>

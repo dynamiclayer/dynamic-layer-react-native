@@ -149,7 +149,6 @@ const CustomInput = ({
   };
 
   return (
-    // Container for the input component
     <View
       style={[
         styles.innerContainer,
@@ -165,7 +164,6 @@ const CustomInput = ({
       ]}
     >
       <View style={{ flex: 1 }}>
-        {/* Animated floating label */}
         <Animated.Text
           style={[
             styles.label,
@@ -177,9 +175,7 @@ const CustomInput = ({
           {placeholder}
         </Animated.Text>
         <View style={styles.inputContainer}>
-          {/* Left icon if provided */}
           {leftIcon && <View>{leftIcon}</View>}
-          {/* Text input field */}
           <TextInput
             {...props}
             style={[
@@ -198,11 +194,9 @@ const CustomInput = ({
             secureTextEntry={showPassword}
             editable={!disabled}
           />
-          {/* Right icon if provided and not a secure text entry */}
           {rightIcon && !props.secureTextEntry && (
             <View style={styles.rightIconContainer}>{rightIcon}</View>
           )}
-          {/* Toggle password visibility for secure text entry */}
           {props.secureTextEntry && !disabled && (
             <TouchableOpacity
               style={styles.rightIconContainer}
@@ -211,20 +205,17 @@ const CustomInput = ({
               {showPassword ? <EyeOffIcon /> : <EyeIcon />}
             </TouchableOpacity>
           )}
-          {/* Error or success icon */}
           <Icon
             condition={!props.secureTextEntry && (error || success)}
             IconComponent={error ? ErrorIcon : SuccessIcon}
             style={styles.icon}
           />
-          {/* Disabled icon */}
           <Icon
             condition={disabled}
             IconComponent={DisabledIcon}
             style={styles.icon}
           />
         </View>
-        {/* Error message */}
         {error && <Text style={styles.errorText}>{error}</Text>}
       </View>
     </View>

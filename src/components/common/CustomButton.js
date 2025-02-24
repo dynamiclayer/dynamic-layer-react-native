@@ -126,36 +126,36 @@ const CustomButton = ({
     <Pressable
       style={[
         {
-          backgroundColor: combinedStyles.backgroundColor, // Set background color based on combined styles
-          height: combinedStyles.height, // Set height based on combined styles
-          borderWidth: combinedStyles.borderWidth || 0, // Set border width based on combined styles
-          borderColor: combinedStyles.borderColor || "transparent", // Set border color based on combined styles
-          paddingHorizontal: combinedStyles.paddingHorizontal, // Set horizontal padding based on combined styles
+          backgroundColor: combinedStyles.backgroundColor,
+          height: combinedStyles.height,
+          borderWidth: combinedStyles.borderWidth || 0,
+          borderColor: combinedStyles.borderColor || "transparent",
+          paddingHorizontal: combinedStyles.paddingHorizontal,
           borderRadius: rounded.rounded_md,
           alignItems: "center",
           justifyContent: "center",
-          ...(scaling === "full" ? { flexGrow: 1 } : { alignSelf: "flex-start" }), // Sets scaling based on `scaling`: `auto` adjusts to font size, otherwise it ajusts to the container.
-          maxHeight: combinedStyles.height, // Set max height based on combined styles
+          ...(scaling === "full" ? { flexGrow: 1 } : { alignSelf: "flex-start" }),
+          maxHeight: combinedStyles.height,
         },
-        containerStyle, // Apply custom container styles
+        containerStyle,
       ]}
-      onPress={handlePress} // Handle button press
-      onPressIn={handlePressIn} // Handle button press in
-      onPressOut={handlePressOut} // Handle button press out
-      disabled={disabled || loading} // Disable button if disabled or loading
+      onPress={handlePress}
+      onPressIn={handlePressIn}
+      onPressOut={handlePressOut}
+      disabled={disabled || loading}
     >
       <View style={styles.contentContainer}>
-        {leftIcon && <View style={styles.iconLeft}>{leftIcon}</View>} {/* Render left icon if provided */}
+        {leftIcon && <View style={styles.iconLeft}>{leftIcon}</View>}
         {loading ? (
           <View style={styles.loadingContainer}>
-            <LoadingDots /> {/* Render loading dots if loading */}
+            <LoadingDots />
           </View>
         ) : (
           <Text style={[styles.text, { color: combinedStyles.textColor, textDecorationLine: combinedStyles.textDecorationLine || "none" }]}>
-            {text} {/* Button Text */}
+            {text}
           </Text>
         )}
-        {rightIcon && <View style={styles.iconRight}>{rightIcon}</View>} {/* Render right icon if provided */}
+        {rightIcon && <View style={styles.iconRight}>{rightIcon}</View>}
       </View>
     </Pressable>
   );
