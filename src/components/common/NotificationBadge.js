@@ -33,8 +33,8 @@ const NotificationBadge = ({ size = "md", notifications, positioning = true, ...
     <View style={{ position: "absolute", ...props }}>
       {notifications > 0 && (
         size === "md" ? renderBadge(styles.notificationBadgeMD, positioning ? [{ translateX: (badgeWidth / 2) + 4 }] : [{ translateX: 0 }])
-        : size === "sm" ? <View style={[styles.notificationBadgeSM, { transform: [{ translateX: 8 }] }]} />
-        : null
+          : size === "sm" ? <View style={[styles.notificationBadgeSM, { transform: [{ translateX: 8 }] }]} />
+            : null
       )}
     </View>
   );

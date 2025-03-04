@@ -18,13 +18,18 @@ const CustomCard = ({
   // Determine container style based on state and size
   // For active state, use active style; for default and disabled states, use disabled style
   const containerStyle =
-    state === "active"
-      ? size === "md"
-        ? styles.cardMdContainer
-        : [styles.cardLgContainer, !showDescription && { height: 92}]
-      : size === "md"
-      ? styles.cardMdDisabled
-      : [styles.cardLgDisabled, !showDescription && { height: 92}];
+  state === "active"
+    ? size === "md"
+      ? [styles.cardMdContainer, { borderWidth: 2, borderColor: colors.black }]
+      : [styles.cardLgContainer, !showDescription && { height: 92 }, { borderWidth: 2, borderColor: colors.black }]
+    : state === "default"
+    ? size === "md"
+      ? styles.cardMdContainer
+      : [styles.cardLgContainer, !showDescription && { height: 92 }]
+    : size === "md"
+    ? styles.cardMdDisabled
+    : [styles.cardLgDisabled, !showDescription && { height: 92 }];
+
 
   // Apply text styles - strikethrough for disabled state only
   const titleStyle = [styles.title, state === "disabled" && styles.strikeThroughText];
@@ -68,8 +73,8 @@ const styles = StyleSheet.create({
     borderRadius: rounded.rounded_lg,
     width: 160,
     height: 64,
-    borderWidth: 2,
-    borderColor: colors.black,
+    borderWidth: 1,
+    borderColor: colors.grey200,
   },
   cardLgContainer: {
     gap: paddings.p_16,
@@ -80,8 +85,8 @@ const styles = StyleSheet.create({
     borderRadius: rounded.rounded_lg,
     width: 160,
     height: 112,
-    borderWidth: 2,
-    borderColor: colors.black,
+    borderWidth: 1,
+    borderColor: colors.grey200,
   },
   // -------------------------------
   // Disabled Styles
