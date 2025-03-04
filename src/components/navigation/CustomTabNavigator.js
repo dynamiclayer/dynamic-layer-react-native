@@ -59,9 +59,10 @@ function CustomTabNavigator({ type = 'md', screens, functional = true }) {
           tabBarShowLabel: false,
           tabBarStyle: {
             height: Platform.select({
-              ios: paddings.p_8 * 3 + 24 + 16,
+              ios: ((paddings.p_8 * 3) + 24 + 16) * 1.5,
               android: paddings.p_8 * 3 + 24 + 16,
             }),
+            backgroundColor: colors.black,
             elevation: 0,
             shadowOpacity: 0,
             borderTopWidth: 1,
