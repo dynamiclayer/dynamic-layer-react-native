@@ -56,13 +56,6 @@ const ButtonDockScreen = () => {
 
 
             </ScrollView>
-            
-            {/* Der Button-Dock wird als absolutes Element am unteren Rand gerendert */}
-            <CustomButtonDock
-                direction="horizontal"
-                firstButton={<CustomButton text="Primary" type="primary" />}
-                secondButton={<CustomButton text="Secondary" type="secondary" />}
-            />
         </View>
     );
 };

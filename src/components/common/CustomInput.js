@@ -254,7 +254,7 @@ const styles = StyleSheet.create({
   iconContainer: { justifyContent: "center", alignItems: "center" },
   icon: { width: 24, height: 24 },
   errorText: {
-    marginTop: paddings.p_8,
+    paddingTop: paddings.p_16,
     ...textStyles.text_sm_medium,
     color: colors.red500,
   },

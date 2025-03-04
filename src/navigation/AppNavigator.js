@@ -8,7 +8,7 @@ import CustomTopNavigation from '../components/navigation/CustomTopNavigation';
 
 // Main Screens
 import HomeScreen from '../screens/Main/HomeScreen';
-import ProfileScreen from '../screens/Main/ProfileScreen';
+import TemplatesScreen from '../screens/Main/TemplatesScreen';
 import ButtonScreen from '../screens/PreviewScreens/buttonScreen';
 import BottomNavigationScreen from '../screens/PreviewScreens/bottomNavigationScreen';
 import InputFieldScreen from '../screens/PreviewScreens/inputFieldScreen';
@@ -42,8 +42,8 @@ const defaultScreenOptions = {
 // Tab Screen Configuration
 const tabScreens = [
   { name: 'Home', component: HomeScreen, icon: HomeIcon, notifications: 0 },
-  { name: 'Templates', component: ProfileScreen, icon: TemplatesIcon, notifications: 5 },
-  { name: 'Settings', component: ProfileScreen, icon: SettingsIcon, notifications: 3 },
+  { name: 'Templates', component: TemplatesScreen, icon: TemplatesIcon, notifications: 5 },
+  { name: 'Settings', component: TemplatesScreen, icon: SettingsIcon, notifications: 3 },
 ];
 
 // Main Tab Navigation

@@ -116,8 +116,7 @@ const styles = StyleSheet.create({
   cardsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    width: '100%',
-    justifyContent: "space-around",
+    justifyContent: 'space-between',
     gap: 16
   },
 });

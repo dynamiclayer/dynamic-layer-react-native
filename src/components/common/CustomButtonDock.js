@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Platform } from 'react-native';
 import { colors, paddings } from '../../style';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 /**
  * CustomButtonDock Component
@@ -12,8 +13,10 @@ import { colors, paddings } from '../../style';
  * @param {React.ReactNode} secondButton - The second button component to display
  */
 const CustomButtonDock = ({ direction = "vertical", firstButton, secondButton }) => {
+  const insets = useSafeAreaInsets();
+
   return (
-    <View style={styles.overlay} pointerEvents="box-none">
+    <View style={[styles.overlay, { marginBottom: insets.bottom }]} pointerEvents="box-none">
       <View style={styles.bottomContainer} pointerEvents="box-none">
         <View style={[styles.dock, direction === "horizontal" ? styles.horizontal : styles.vertical]}>
           {firstButton && (

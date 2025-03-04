@@ -19,25 +19,22 @@ const CustomCardScreen = () => {
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
             </Text>
             <View style={styles.sectionContainer}>
+
                 <View style={styles.rowContainer}>
-                    <View style={styles.itemContainer}>
-                        <CustomCard
-                            iconSource={<PlaceholderIcon />}
-                            title="Title"
-                            description="Description"
-                            size="md"
-                            state="active" // Standard: aktive Darstellung
-                        />
-                    </View>
-                    <View style={styles.itemContainer}>
-                        <CustomCard
-                            iconSource={<PlaceholderIcon />}
-                            title="Title"
-                            description="Description"
-                            size="lg"
-                            state="active"
-                        />
-                    </View>
+                    <CustomCard
+                        iconSource={<PlaceholderIcon fill={colors.black} />}
+                        title="Title"
+                        description="Description"
+                        size="md"
+                        state="active" // Standard: aktive Darstellung
+                    />
+                    <CustomCard
+                        iconSource={<PlaceholderIcon fill={colors.black} />}
+                        title="Title"
+                        description="Description"
+                        size="lg"
+                        state="active"
+                    />
                 </View>
             </View>
 
@@ -54,25 +51,20 @@ const CustomCardScreen = () => {
             </Text>
             <View style={styles.sectionContainer}>
                 <View style={styles.rowContainer}>
-                    <View style={styles.itemContainer}>
                         <CustomCard
-                            iconSource={<PlaceholderIcon />}
+                            iconSource={<PlaceholderIcon fill={colors.black} />}
                             title="Title"
                             description="Description"
                             size="lg"
                             state="active"
                         />
-                    </View>
-                    <View style={styles.itemContainer}>
                         <CustomCard
-                            iconSource={<PlaceholderIcon />}
+                            iconSource={<PlaceholderIcon fill={colors.black} />}
                             title="Title"
                             description="Description"
                             size="lg"
                             state="default"
                         />
-                    </View>
-                    <View style={styles.itemContainer}>
                         <CustomCard
                             iconSource={<PlaceholderIcon />}
                             title="Title"
@@ -80,7 +72,6 @@ const CustomCardScreen = () => {
                             size="lg"
                             state="disabled"
                         />
-                    </View>
                 </View>
             </View>
 
@@ -97,26 +88,22 @@ const CustomCardScreen = () => {
             </Text>
             <View style={styles.sectionContainer}>
                 <View style={styles.rowContainer}>
-                    <View style={styles.itemContainer}>
-                        <CustomCard
-                            iconSource={<PlaceholderIcon />}
-                            title="Title"
-                            description="Description"
-                            size="lg"
-                            state="active"
-                            showDescription={true}
-                        />
-                    </View>
-                    <View style={styles.itemContainer}>
-                        <CustomCard
-                            iconSource={<PlaceholderIcon />}
-                            title="Title"
-                            description="Description"
-                            size="lg"
-                            state="active"
-                            showDescription={false}
-                        />
-                    </View>
+                    <CustomCard
+                        iconSource={<PlaceholderIcon fill={colors.black} />}
+                        title="Title"
+                        description="Description"
+                        size="lg"
+                        state="active"
+                        showDescription={true}
+                    />
+                    <CustomCard
+                        iconSource={<PlaceholderIcon fill={colors.black} />}
+                        title="Title"
+                        description="Description"
+                        size="lg"
+                        state="active"
+                        showDescription={false}
+                    />
                 </View>
             </View>
         </ScrollView>
@@ -128,7 +115,6 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingHorizontal: paddings.p_16,
         paddingVertical: paddings.p_32,
-        marginBottom: paddings.p_32,
         backgroundColor: colors.white,
     },
     sectionContainer: {

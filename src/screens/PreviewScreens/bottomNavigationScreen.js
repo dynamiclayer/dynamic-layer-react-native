@@ -5,7 +5,7 @@ import CustomIcon from '../../../assets/icons/svg_js/customIcon';
 import { ScrollView } from 'react-native-gesture-handler';
 import CustomTabNavigator from '../../components/navigation/CustomTabNavigator';
 import HomeScreen from '../Main/HomeScreen';
-import ProfileScreen from '../Main/ProfileScreen';
+import ProfileScreen from '../Main/TemplatesScreen';
 import TemplatesIcon from '../../../assets/icons/Navigation/templateIcon';
 
 const BottomNavigationScreen = () => {

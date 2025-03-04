@@ -3,10 +3,10 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function ProfileScreen() {
+export default function TemplatesScreen() {
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Profile Screen</Text>
+      <Text>Templates</Text>
     </SafeAreaView>
   );
 }
