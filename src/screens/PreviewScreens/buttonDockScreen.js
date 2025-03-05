@@ -17,7 +17,7 @@ const ButtonDockScreen = () => {
                     style={{
                         ...textStyles.text_sm_regular,
                         color: colors.grey500,
-                        paddingBottom: paddings.p_32,
+                        marginBottom: paddings.p_32,
                     }}
                 >
                     The count changes dynamically based on the button Count (min 1, max 2)
@@ -25,6 +25,7 @@ const ButtonDockScreen = () => {
                 <View style={{ height: 89 }}>
                     <CustomButtonDock
                         firstButton={<CustomButton text="Primary" type="primary" />}
+                        style={{paddingBottom: 0}} // No need! Adds custom styling to the ButtonDock. (Just for the preview screen needed)
                     />
                 </View>
 
@@ -32,6 +33,7 @@ const ButtonDockScreen = () => {
                     <CustomButtonDock
                         firstButton={<CustomButton text="Primary" type="primary" />}
                         secondButton={<CustomButton text="Secondary" type="secondary" />}
+                        style={{paddingBottom: 0}} // No need! Adds custom styling to the ButtonDock. (Just for the preview screen needed)
                     />
                 </View>
 
@@ -51,10 +53,9 @@ const ButtonDockScreen = () => {
                         direction="horizontal"
                         firstButton={<CustomButton text="Primary" type="primary" />}
                         secondButton={<CustomButton text="Secondary" type="secondary" />}
+                        style={{paddingBottom: 0}}
                     />
                 </View>
-
-
             </ScrollView>
         </View>
     );
