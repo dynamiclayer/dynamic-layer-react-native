@@ -79,10 +79,9 @@ const getCombinedStyles = (type, state, size) => {
 // CustomButton component definition
 // --------------------------------------------
 const CustomButton = ({
-  containerStyle,     // Custom styles for the button container
   onPress,            // Function to call when the button is pressed
   text = "",          // Text to display on the button
-  type = "secondary", // Button type (primary, secondary, tertiary, ghost)
+  type = "primary", // Button type (primary, secondary, tertiary, ghost)
   size = 4,           // Button size (1 to 4)
   leftIcon,           // Icon to display on the left side of the button
   rightIcon,          // Icon to display on the right side of the button
@@ -137,7 +136,6 @@ const CustomButton = ({
           ...(scaling === "full" ? { flexGrow: 1 } : { alignSelf: "flex-start" }),
           maxHeight: combinedStyles.height,
         },
-        containerStyle,
       ]}
       onPress={handlePress}
       onPressIn={handlePressIn}
