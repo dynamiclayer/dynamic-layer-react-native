@@ -22,7 +22,7 @@ export default function HomeScreen() {
         <View style={styles.cardsContainer}>
           {/* Button */}
           <CustomCard
-            iconSource={<CheckCircleIcon />}
+            icon={<CheckCircleIcon />}
             title="Button"
             description="Component"
             size="lg"
@@ -31,7 +31,7 @@ export default function HomeScreen() {
 
           {/* Button Icon */}
           <CustomCard
-            iconSource={<CheckCircleIcon />}
+            icon={<CheckCircleIcon />}
             title="Button Icon"
             description="Component"
             size="lg"
@@ -40,7 +40,7 @@ export default function HomeScreen() {
 
           {/* Button Dock */}
           <CustomCard
-            iconSource={<CheckCircleIcon />}
+            icon={<CheckCircleIcon />}
             title="Button Dock"
             description="Component"
             size="lg"
@@ -49,7 +49,7 @@ export default function HomeScreen() {
 
           {/* Notification Badge */}
           <CustomCard
-            iconSource={<CheckCircleIcon />}
+            icon={<CheckCircleIcon />}
             title="Notification Badge"
             description="Component"
             size="lg"
@@ -58,7 +58,7 @@ export default function HomeScreen() {
 
           {/* Bottom Navigation */}
           <CustomCard
-            iconSource={<CheckCircleIcon />}
+            icon={<CheckCircleIcon />}
             title="Bottom Navigation"
             description="Component"
             size="lg"
@@ -67,7 +67,7 @@ export default function HomeScreen() {
 
           {/* Card */}
           <CustomCard
-            iconSource={<CheckCircleIcon />}
+            icon={<CheckCircleIcon />}
             title="Card"
             description="Component"
             size="lg"
@@ -76,7 +76,7 @@ export default function HomeScreen() {
 
           {/* Input Field */}
           <CustomCard
-            iconSource={<CheckCircleIcon />}
+            icon={<CheckCircleIcon />}
             title="Input Field"
             description="Component"
             size="lg"
@@ -85,7 +85,7 @@ export default function HomeScreen() {
 
           {/* Top Navigation */}
           <CustomCard
-            iconSource={<CheckCircleIcon />}
+            icon={<CheckCircleIcon />}
             title="Top Navigation"
             description="Component"
             size="lg"

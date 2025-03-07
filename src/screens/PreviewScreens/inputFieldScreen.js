@@ -15,7 +15,10 @@ const InputFieldScreen = () => {
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
             </Text>
             <View style={[styles.inputContainer, styles.paddingBottom32]}>
-                <CustomInput size={3} placeholder={"Input Field"} />
+                <CustomInput 
+                    size={3} 
+                    placeholder={"Input Field"} 
+                />
                 <CustomInput
                     size={3}
                     placeholder={"Input Field"}

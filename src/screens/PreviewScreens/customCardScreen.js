@@ -22,18 +22,16 @@ const CustomCardScreen = () => {
 
                 <View style={styles.rowContainer}>
                     <CustomCard
-                        iconSource={<PlaceholderIcon fill={colors.black} />}
+                        icon={<PlaceholderIcon fill={colors.black} />}
                         title="Title"
                         description="Description"
                         size="md"
-                        state="active" // Standard: aktive Darstellung
                     />
                     <CustomCard
-                        iconSource={<PlaceholderIcon fill={colors.black} />}
+                        icon={<PlaceholderIcon fill={colors.black} />}
                         title="Title"
                         description="Description"
                         size="lg"
-                        state="active"
                     />
                 </View>
             </View>
@@ -52,21 +50,21 @@ const CustomCardScreen = () => {
             <View style={styles.sectionContainer}>
                 <View style={styles.rowContainer}>
                         <CustomCard
-                            iconSource={<PlaceholderIcon fill={colors.black} />}
+                            icon={<PlaceholderIcon fill={colors.black} />}
                             title="Title"
                             description="Description"
                             size="lg"
                             state="active"
                         />
                         <CustomCard
-                            iconSource={<PlaceholderIcon fill={colors.black} />}
+                            icon={<PlaceholderIcon fill={colors.black} />}
                             title="Title"
                             description="Description"
                             size="lg"
                             state="default"
                         />
                         <CustomCard
-                            iconSource={<PlaceholderIcon />}
+                            icon={<PlaceholderIcon />}
                             title="Title"
                             description="Description"
                             size="lg"
@@ -89,7 +87,7 @@ const CustomCardScreen = () => {
             <View style={styles.sectionContainer}>
                 <View style={styles.rowContainer}>
                     <CustomCard
-                        iconSource={<PlaceholderIcon fill={colors.black} />}
+                        icon={<PlaceholderIcon fill={colors.black} />}
                         title="Title"
                         description="Description"
                         size="lg"
@@ -97,7 +95,7 @@ const CustomCardScreen = () => {
                         showDescription={true}
                     />
                     <CustomCard
-                        iconSource={<PlaceholderIcon fill={colors.black} />}
+                        icon={<PlaceholderIcon fill={colors.black} />}
                         title="Title"
                         description="Description"
                         size="lg"
