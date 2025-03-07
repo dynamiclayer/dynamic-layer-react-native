@@ -2,7 +2,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
 import { colors, paddings, textStyles } from '../../style';
 import { ScrollView } from 'react-native-gesture-handler';
-import NotificationBadge from '../../components/common/NotificationBadge';
+import CustomBadgeNotification from '../../components/common/CustomBadgeNotification';
 
 const NotificationBadgeScreen = () => {
     return (
@@ -13,10 +13,10 @@ const NotificationBadgeScreen = () => {
             </Text>
             <View style={styles.row}>
                 <View style={styles.autoWidth}>
-                    <NotificationBadge size="md" notifications={5232344} positioning={false} position={"relative"}/> 
+                    <CustomBadgeNotification size="md" notifications={5} positioning={false} position={"relative"}/> 
                 </View>
                 <View style={styles.smallBadge}>
-                    <NotificationBadge size="sm" notifications={3} position={"relative"}/>
+                    <CustomBadgeNotification size="sm" notifications={3} position={"relative"}/>
                 </View>
             </View>
         </ScrollView>

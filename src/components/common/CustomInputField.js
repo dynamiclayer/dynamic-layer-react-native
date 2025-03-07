@@ -26,52 +26,51 @@ const Icon = ({ condition, IconComponent, style }) =>
   condition ? <IconComponent style={style} /> : null;
 
 /**
- * CustomInput Component
+ * CustomInputField Component
  * A versatile text input component with floating label, error states, and icon support
  *
  * @param {Object} containerStyle - Custom styles for the input container
  * @param {string} placeholder - Placeholder text that becomes the floating label
  * @param {Function} onChangeText - Callback when text changes
  * @param {string} error - Error message to display
- * @param {boolean} success - Whether the input is in a success state
- * @param {boolean} disabled - Whether the input is disabled
- * @param {React.ReactNode} leftIcon - Icon to display on the left side
- * @param {React.ReactNode} rightIcon - Icon to display on the right side
+ * @param {React.ReactNode} iconLeft - Icon to display on the left side
+ * @param {React.ReactNode} iconRight - Icon to display on the right side
  * @param {Function} onEndEditing - Callback when editing ends
- * @param {number} size - Input size (1-3)
+ * @param {string} size - Input size ("sm", "md", "lg")
  * @param {string} value - Controlled input value
  * @param {boolean} isHighlighted - Whether the input should be highlighted
+ * @param {string} type - Input type ("default", "success", "warning", "error")
+ * @param {string} state - Input state ("default", "disabled")
  */
-const CustomInput = ({
-  containerStyle,
+const CustomInputField = ({
   placeholder,
   onChangeText,
   error,
-  success,
-  disabled,
-  leftIcon,
-  rightIcon,
+  iconLeft,
+  iconRight,
   onEndEditing,
-  size = 3,
+  size = "lg",
   value,
   isHighlighted = false,
+  type = "default",
+  state = "default",
   ...props
 }) => {
   // Size configurations for different input sizes
   const sizeOptions = {
-    1: {
+    sm: {
       height: 40,
       textNormalSize: 16,
       paddingHorizontal: 12,
       paddingVertical: 1,
     },
-    2: {
+    md: {
       height: 48,
       textNormalSize: 16,
       paddingHorizontal: 16,
       paddingVertical: 4,
     },
-    3: {
+    lg: {
       height: 56,
       textNormalSize: 16,
       paddingHorizontal: 16,
@@ -92,6 +91,9 @@ const CustomInput = ({
     new Animated.Value(currentValue ? 1 : 0)
   ).current;
 
+  // Determine if the input is disabled based on state prop
+  const isDisabled = state === "disabled";
+
   // Animate the floating label
   const animatedLabel = (toValue) => {
     Animated.timing(labelPosition, {
@@ -108,21 +110,21 @@ const CustomInput = ({
 
   // Handle focus events
   const handleFocus = useCallback(() => {
-    if (!disabled) {
+    if (!isDisabled) {
       setIsFocusedInternal(true);
       animatedLabel(1);
     }
-  }, [disabled]);
+  }, [isDisabled]);
 
   // Handle blur events
   const handleBlur = useCallback(() => {
-    if (!disabled) {
+    if (!isDisabled) {
       setIsFocusedInternal(false);
       if (!currentValue && !isHighlighted) {
         animatedLabel(0);
       }
     }
-  }, [disabled, currentValue, isHighlighted]);
+  }, [isDisabled, currentValue, isHighlighted]);
 
   // Handle text changes
   const handleTextChange = useCallback(
@@ -137,7 +139,7 @@ const CustomInput = ({
   const LabelOutput = () => (height - paddingVertical * 2 - textNormalSize) / 2;
 
   const labelStyle = {
-    left: leftIcon ? 24 + paddingHorizontal : 0,
+    left: iconLeft ? 24 + paddingHorizontal : 0,
     top: labelPosition.interpolate({
       inputRange: [0, 1],
       outputRange: [LabelOutput(), 0],
@@ -158,8 +160,11 @@ const CustomInput = ({
           paddingHorizontal: paddingHorizontal - 1,
           paddingVertical: paddingVertical - 1,
         },
-        disabled && styles.disabled,
-        containerStyle,
+        type === "success" && styles.success,
+        type === "warning" && styles.warning,
+        type === "error" && styles.error,
+        isDisabled && styles.disabled,
+        
         error ? { marginBottom: paddings.p_24 } : {},
       ]}
     >
@@ -168,21 +173,23 @@ const CustomInput = ({
           style={[
             styles.label,
             labelStyle,
-            error && styles.errorLabel,
-            disabled && styles.disabledLabel,
+            type === "success" && styles.successLabel,
+            type === "warning" && styles.warningLabel,
+            type === "error" && styles.errorLabel,
+            isDisabled && styles.disabledLabel,
           ]}
         >
           {placeholder}
         </Animated.Text>
         <View style={styles.inputContainer}>
-          {leftIcon && <View>{leftIcon}</View>}
+          {iconLeft && <View>{iconLeft}</View>}
           <TextInput
             {...props}
             style={[
               styles.input,
-              { paddingLeft: leftIcon ? paddingHorizontal : 0, height: "100%" },
+              { paddingLeft: iconLeft ? paddingHorizontal : 0, height: "100%" },
               Platform.OS === "android" && { paddingVertical: 0 },
-              disabled && styles.disabledInput,
+              isDisabled && styles.disabledInput,
             ]}
             onFocus={handleFocus}
             onBlur={handleBlur}
@@ -192,12 +199,12 @@ const CustomInput = ({
             textAlignVertical="center"
             textContentType={props.secureTextEntry ? "password" : "none"}
             secureTextEntry={showPassword}
-            editable={!disabled}
+            editable={!isDisabled}
           />
-          {rightIcon && !props.secureTextEntry && (
-            <View style={styles.rightIconContainer}>{rightIcon}</View>
+          {iconRight && !props.secureTextEntry && (
+            <View style={styles.rightIconContainer}>{iconRight}</View>
           )}
-          {props.secureTextEntry && !disabled && (
+          {props.secureTextEntry && !isDisabled && (
             <TouchableOpacity
               style={styles.rightIconContainer}
               onPress={() => setShowPassword(!showPassword)}
@@ -206,12 +213,12 @@ const CustomInput = ({
             </TouchableOpacity>
           )}
           <Icon
-            condition={!props.secureTextEntry && (error || success)}
-            IconComponent={error ? ErrorIcon : SuccessIcon}
+            condition={!props.secureTextEntry && (type === "success" || type === "error")}
+            IconComponent={type === "error" ? ErrorIcon : SuccessIcon}
             style={styles.icon}
           />
           <Icon
-            condition={disabled}
+            condition={isDisabled}
             IconComponent={DisabledIcon}
             style={styles.icon}
           />
@@ -260,4 +267,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CustomInput;
+export default CustomInputField;

@@ -3,7 +3,7 @@ import React from 'react'
 import { colors, paddings, rounded, textStyles } from '../../style';
 import CustomIcon from '../../../assets/icons/svg_js/customIcon';
 import { ScrollView } from 'react-native-gesture-handler';
-import CustomTabNavigator from '../../components/navigation/CustomTabNavigator';
+import CustomBottomNavigation from '../../components/navigation/CustomBottomNavigation';
 import HomeScreen from '../Main/HomeScreen';
 import ProfileScreen from '../Main/TemplatesScreen';
 import TemplatesIcon from '../../../assets/icons/Navigation/templateIcon';
@@ -62,7 +62,7 @@ const BottomNavigationScreen = () => {
         ];
 
         return (
-            <CustomTabNavigator
+            <CustomBottomNavigation
                 type="md"
                 screens={screens}
                 functional={false}

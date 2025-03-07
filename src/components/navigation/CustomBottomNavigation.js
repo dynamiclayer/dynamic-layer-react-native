@@ -2,18 +2,18 @@ import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Platform, StyleSheet, Text, View, Pressable } from 'react-native';
 import { colors, paddings, textStyles, rounded } from '../../style';
-import NotificationBadge from '../common/NotificationBadge';
+import CustomBadgeNotification from '../common/CustomBadgeNotification';
 
 const Tab = createBottomTabNavigator();
 
-const NotificationBadgeWrapper = ({ type, notifications }) => (
+const NotificationBadgeWrapper = ({ badge, notifications }) => (
   <>
-    {type === "md" && <NotificationBadge size='md' notifications={notifications} top={-4} />}
-    {type === "sm" && <NotificationBadge size='sm' notifications={notifications} top={0} />}
+    {badge === "md" && <CustomBadgeNotification size='md' notifications={notifications} top={-4} />}
+    {badge === "sm" && <CustomBadgeNotification size='sm' notifications={notifications} top={0} />}
   </>
 );
 
-function CustomTabNavigator({ type = 'md', screens, functional = true }) {
+function CustomBottomNavigation({ badge = 'md', screens, functional = true }) {
   const [activeTab, setActiveTab] = useState(screens[0].name);
 
   return (
@@ -41,7 +41,7 @@ function CustomTabNavigator({ type = 'md', screens, functional = true }) {
           tabBarIcon: ({ focused }) => (
             <View style={styles.container}>
               <IconComponent isHighlighted={isFocused} />
-              <NotificationBadgeWrapper type={type} notifications={notifications} />
+              <NotificationBadgeWrapper badge={badge} notifications={notifications} />
               <Text
                 style={[
                   textStyles.text_xs_bold,
@@ -115,4 +115,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CustomTabNavigator;
+export default CustomBottomNavigation;

@@ -42,22 +42,22 @@ const ButtonIconScreen = () => {
                         <CustomButtonIcon
                             icon={<CustomIcon fill={colors.white} />}
                             type={"primary"}
-                            size={4}
+                            size="lg"
                         />
                         <CustomButtonIcon
                             icon={<CustomIcon fill={colors.white} />}
                             type={"primary"}
-                            size={3}
+                            size="md"
                         />
                         <CustomButtonIcon
                             icon={<CustomIcon fill={colors.white} />}
                             type={"primary"}
-                            size={2}
+                            size="sm"
                         />
                         <CustomButtonIcon
                             icon={<CustomIcon fill={colors.white} />}
                             type={"primary"}
-                            size={1}
+                            size="xs"
                         />
                     </View>
                 </View>
@@ -71,13 +71,13 @@ const ButtonIconScreen = () => {
                     <CustomButtonIcon
                         icon={<CustomIcon fill={colors.white} />}
                         type={"primary"}
-                        size={4}
+                        size="lg"
                     />
                     <CustomButtonIcon
                         icon={<CustomIcon fill={colors.grey600} />}
                         type={"primary"}
-                        size={4}
-                        disabled={true}
+                        size="lg"
+                        state="disabled"
                     />
                 </View>
             </View>

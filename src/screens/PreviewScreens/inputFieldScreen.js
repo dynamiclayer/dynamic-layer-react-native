@@ -1,12 +1,12 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
 import { colors, paddings, textStyles } from '../../style';
-import CustomInput from '../../components/common/CustomInput';
+import CustomInputField from '../../components/common/CustomInputField';
 import PlusIcon from '../../../assets/icons/svg_js/plusIcon';
 import { ScrollView } from 'react-native-gesture-handler';
 
 const InputFieldScreen = () => {
-    const [inputValue, setInputValue] = useState('Input Field');
+    const [inputValue, setInputValue] = useState('Input Title');
 
     return (
         <ScrollView style={styles.container}>
@@ -15,22 +15,30 @@ const InputFieldScreen = () => {
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
             </Text>
             <View style={[styles.inputContainer, styles.paddingBottom32]}>
-                <CustomInput 
-                    size={3} 
-                    placeholder={"Input Field"} 
-                />
-                <CustomInput
-                    size={3}
+                <CustomInputField
+                    size="lg"
                     placeholder={"Input Field"}
-                    value={inputValue}
-                    onChangeText={(text) => setInputValue(text)}
-                    isHighlighted={true}
+                    type="default"
+                    state="default"
                 />
-                <CustomInput
-                    size={3}
+                <CustomInputField
+                    size="lg"
                     placeholder={"Input Field"}
-                    value={inputValue}
-                    onChangeText={(text) => setInputValue(text)}
+                    type="success"
+                    state="default"
+                />
+                <CustomInputField
+                    size="lg"
+                    placeholder={"Input Field"}
+                    type="default"
+                    state="disabled"
+                />
+                <CustomInputField
+                    size="lg"
+                    placeholder={"Input Field"}
+                    type="error"
+                    state="default"
+                    error={"Description"}
                 />
             </View>
             <Text style={[textStyles.text_lg_semibold, styles.paddingBottom8]}>Size</Text>
@@ -38,27 +46,26 @@ const InputFieldScreen = () => {
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
             </Text>
             <View style={[styles.inputContainer, styles.paddingBottom32]}>
-                <CustomInput size={3} placeholder={"Input Field"} />
-                <CustomInput size={2} placeholder={"Input Field"} />
-                <CustomInput size={1} placeholder={"Input Field"} />
+                <CustomInputField size="lg" placeholder={"Input Field"} />
+                <CustomInputField size="md" placeholder={"Input Field"} />
+                <CustomInputField size="sm" placeholder={"Input Field"} />
             </View>
             <Text style={[textStyles.text_lg_semibold, styles.paddingBottom8]}>Icons</Text>
             <Text style={[textStyles.text_sm_regular, styles.greyText, styles.paddingBottom32]}>
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
             </Text>
             <View style={[styles.inputContainer, styles.paddingBottom32]}>
-                <CustomInput size={3} placeholder={"Input Field"} rightIcon={<PlusIcon />} />
-                <CustomInput size={3} placeholder={"Input Field"} leftIcon={<PlusIcon />} />
+                <CustomInputField size="lg" placeholder={"Input Field"} iconRight={<PlusIcon />} />
+                <CustomInputField size="lg" placeholder={"Input Field"} iconLeft={<PlusIcon />} />
             </View>
             <Text style={[textStyles.text_lg_semibold, styles.paddingBottom8]}>States</Text>
             <Text style={[textStyles.text_sm_regular, styles.greyText, styles.paddingBottom32]}>
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
             </Text>
             <View style={[styles.inputContainer, styles.marginBottom32]}>
-                <CustomInput size={3} placeholder={"Input Field"} />
-                <CustomInput size={3} placeholder={"Input Field"} success={true} />
-                <CustomInput size={3} placeholder={"Input Field"} disabled={true} />
-                <CustomInput size={3} placeholder={"Input Field"} error={"Description"} />
+                <CustomInputField size="lg" placeholder={"Input Field"} />
+                <CustomInputField size="lg" placeholder={"Input Field"} value={inputValue} onChange={(value) => setInputValue(value)}/>
+                <CustomInputField size="lg" placeholder={"Input Field"} value={inputValue} onChange={(value) => setInputValue(value)} isHighlighted={true} />
             </View>
         </ScrollView>
     );

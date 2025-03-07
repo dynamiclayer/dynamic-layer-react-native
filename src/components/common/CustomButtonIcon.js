@@ -55,10 +55,10 @@ const stateStyles = {
  * Defines height and padding for each size variant
  */
 const sizeStyles = {
-  1: { height: 32, padding: paddings.p_4 },
-  2: { height: 40, padding: paddings.p_8 },
-  3: { height: 48, padding: paddings.p_12 },
-  4: { height: 56, padding: paddings.p_16 },
+  xs: { height: 32, padding: paddings.p_4 },
+  sm: { height: 40, padding: paddings.p_8 },
+  md: { height: 48, padding: paddings.p_12 },
+  lg: { height: 56, padding: paddings.p_16 },
 };
 
 /**
@@ -95,29 +95,29 @@ const CustomButtonIcon = ({
   containerStyle,
   onPress,
   type = "secondary",
-  size = 4,
+  size = "lg",
   icon,
-  disabled = false,
+  state = "default",
 }) => {
   const [buttonState, setButtonState] = useState('default');
-  const state = disabled ? 'disabled' : buttonState;
+  const currentState = state === 'default' ? buttonState : state;
   const combinedStyles = getCombinedStyles(type, state, size);
 
   // Handle button press events
   const handlePressIn = () => {
-    if (!disabled) {
+    if (state === 'default') {
       setButtonState('pressed');
     }
   };
 
   const handlePressOut = () => {
-    if (!disabled) {
+    if (state === 'default') {
       setButtonState('default');
     }
   };
 
   const handlePress = () => {
-    if (!disabled && onPress) {
+    if (state === 'default' && onPress) {
       onPress();
     }
   };
@@ -142,7 +142,7 @@ const CustomButtonIcon = ({
       onPress={handlePress}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}      
-      disabled={disabled}
+      disabled={state === 'disabled'}
       >
         <View style={styles.contentContainer}>
           {icon && <View style={styles.icon}>{icon}</View>}

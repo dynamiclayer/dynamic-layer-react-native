@@ -22,22 +22,22 @@ const TopNavigationScreen = () => {
             <View style={[styles.inputContainer, { paddingBottom: paddings.p_32 }]}>
                 {/* Default Type Navigation Header */}
                 <CustomTopNavigation
-                    type={'default'} // Optional: Defines the header type ('default' or 'large'). Default value: 'default'
+                    size={'md'} // Optional: Defines the header size ('md' or 'lg'). Default value: 'md'
                     title={"Title"} // Required: Sets the title in the header
-                    leftIcon={<BackIcon />} // Optional: Left icon in the header. For type='default', BackIcon is used by default
-                    rightIcon={<CamIcon />} // Required: Icon for the right button
-                    leftIconPress={() => console.log('Left Icon Pressed')} // Required: Callback function for the left icon
-                    rightIconPress={() => console.log('Right Icon Pressed')} // Required: Callback function for the right icon
+                    iconLeft={<BackIcon />} // Optional: Left icon in the header. For size='md', BackIcon is used by default
+                    iconRight={<CamIcon />} // Required: Icon for the right button
+                    iconLeftPressed={() => console.log('Left Icon Pressed')} // Required: Callback function for the left icon
+                    iconRightPressed={() => console.log('Right Icon Pressed')} // Required: Callback function for the right icon
                 />
 
                 {/* Large Type Navigation Header */}
                 <CustomTopNavigation
-                    type={'large'} // Optional: Defines the header type ('default' or 'large'). Default value: 'default'
+                    size={'lg'} // Optional: Defines the header size ('md' or 'lg'). Default value: 'md'
                     title={"Title"} // Required: Sets the title in the header
-                    leftIcon={<ChatIcon />} // Optional: Left icon in the header. For type='default', BackIcon is used by default
-                    rightIcon={<CamIcon />} // Required: Icon for the right button
-                    leftIconPress={() => console.log('Left Icon Pressed')} // Required: Callback function for the left icon
-                    rightIconPress={() => console.log('Right Icon Pressed')} // Required: Callback function for the right icon
+                    iconLeft={<ChatIcon />} // Optional: Left icon in the header. For size='md', BackIcon is used by default
+                    iconRight={<CamIcon />} // Required: Icon for the right button
+                    iconLeftPressed={() => console.log('Left Icon Pressed')} // Required: Callback function for the left icon
+                    iconRightPressed={() => console.log('Right Icon Pressed')} // Required: Callback function for the right icon
                 />
             </View>
 
@@ -46,10 +46,10 @@ const TopNavigationScreen = () => {
             <Text style={{ ...textStyles.text_sm_regular, color: colors.grey500, paddingBottom: paddings.p_32 }}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</Text>
             <View style={[styles.inputContainer, { paddingBottom: paddings.p_32 }]}>
                 <CustomTopNavigation
-                    type={'default'} // Optional: Defines the header type ('default' or 'large'). Default value: 'default'
+                    size={'md'} // Optional: Defines the header size ('md' or 'lg'). Default value: 'md'
                     title={"Title"} // Required: Sets the title in the header
-                    leftIcon={<BackIcon />} // Optional: Left icon in the header. For type='default', BackIcon is used by default
-                    leftIconPress={() => console.log('Left Icon Pressed')} // Required: Callback function for the left icon
+                    iconLeft={<BackIcon />} // Optional: Left icon in the header. For size='md', BackIcon is used by default
+                    iconLeftPressed={() => console.log('Left Icon Pressed')} // Required: Callback function for the left icon
                 />
             </View>
 
@@ -58,10 +58,10 @@ const TopNavigationScreen = () => {
             <Text style={{ ...textStyles.text_sm_regular, color: colors.grey500, paddingBottom: paddings.p_32 }}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</Text>
             <View style={[styles.inputContainer, { marginBottom: paddings.p_32 }]}>
                 <CustomTopNavigation
-                    type={'default'} // Optional: Defines the header type ('default' or 'large'). Default value: 'default'
+                    size={'md'} // Optional: Defines the header size ('md' or 'lg'). Default value: 'md'
                     title={"Title"} // Required: Sets the title in the header
-                    rightIcon={<CamIcon />} // Required: Icon for the right button
-                    rightIconPress={() => console.log('Right Icon Pressed')} // Required: Callback function for the right icon
+                    iconRight={<CamIcon />} // Required: Icon for the right button
+                    iconRightPressed={() => console.log('Right Icon Pressed')} // Required: Callback function for the right icon
                 />
             </View>
         </ScrollView>

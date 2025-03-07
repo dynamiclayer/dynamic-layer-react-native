@@ -20,35 +20,35 @@ const IconContainer = ({ icon, onPress, style }) => (
 );
 
 const CustomTopNavigation = ({
-  type = 'default',
+  size = 'md',
   title,
-  leftIcon = null,
-  rightIcon = null,
-  leftIconPress = null,
-  rightIconPress = null,
+  iconLeft = null,
+  iconRight = null,
+  iconLeftPressed = null,
+  iconRightPressed = null,
 }) => {
   const insets = useSafeAreaInsets();
-  const headerHeight = type === 'default' ? insets.top + 56 : 88;
+  const headerHeight = size === 'md' ? insets.top + 56 : 88;
 
   const defaultLook = () => (
     <SafeAreaView style={[styles.header, { height: headerHeight }]}>
-      <IconContainer icon={leftIcon} onPress={leftIconPress} style={{ top: Platform.OS === 'ios' ? (headerHeight - insets.top - 24) / 2 : 0 }} />
+      <IconContainer icon={iconLeft} onPress={iconLeftPressed} style={{ top: Platform.OS === 'ios' ? (headerHeight - insets.top - 24) / 2 : 0 }} />
       <Text style={[styles.title, { top: (headerHeight + 24) / 2, paddingHorizontal: 56 + 16 }]} numberOfLines={1}>
         {title}
       </Text>
-      <IconContainer icon={rightIcon} onPress={rightIconPress} style={{ top: Platform.OS === 'ios' ? (headerHeight - insets.top - 24) / 2 : 0 }} />
+      <IconContainer icon={iconRight} onPress={iconRightPressed} style={{ top: Platform.OS === 'ios' ? (headerHeight - insets.top - 24) / 2 : 0 }} />
     </SafeAreaView>
   );
 
   const largeLook = () => (
     <View style={[styles.headerLarge, { height: headerHeight }]}>
       <Text style={styles.largeTitle} numberOfLines={1}>{title}</Text>
-      <IconContainer icon={leftIcon} onPress={leftIconPress} />
-      <IconContainer icon={rightIcon} onPress={rightIconPress} />
+      <IconContainer icon={iconLeft} onPress={iconLeftPressed} />
+      <IconContainer icon={iconRight} onPress={iconRightPressed} />
     </View>
   );
 
-  return type === 'default' ? defaultLook() : largeLook();
+  return size === 'md' ? defaultLook() : largeLook();
 };
 
 const styles = StyleSheet.create({

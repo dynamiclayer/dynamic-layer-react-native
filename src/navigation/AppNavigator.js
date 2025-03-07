@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Components
-import CustomTabNavigator from '../components/navigation/CustomTabNavigator';
+import CustomBottomNavigation from '../components/navigation/CustomBottomNavigation';
 import CustomTopNavigation from '../components/navigation/CustomTopNavigation';
 
 // Main Screens
@@ -31,10 +31,10 @@ const MainStack = createNativeStackNavigator();
 const defaultScreenOptions = {
   header: ({ route, navigation, options }) => (
     <CustomTopNavigation
-      type="default"
+      size="md"
       title={options.title || route.name}
-      leftIcon={<BackIcon />}
-      leftIconPress={() => navigation.goBack()}
+      iconLeft={<BackIcon />}
+      iconLeftPressed={() => navigation.goBack()}
     />
   ),
 };
@@ -48,7 +48,7 @@ const tabScreens = [
 
 // Main Tab Navigation
 function MainTabScreen() {
-  return <CustomTabNavigator type="md" screens={tabScreens} />;
+  return <CustomBottomNavigation type="md" screens={tabScreens} />;
 }
 
 // Main Navigation

@@ -92,15 +92,12 @@ const CustomCardScreen = () => {
                         description="Description"
                         size="lg"
                         state="active"
-                        showDescription={true}
                     />
                     <CustomCard
                         icon={<PlaceholderIcon fill={colors.black} />}
                         title="Title"
-                        description="Description"
                         size="lg"
                         state="active"
-                        showDescription={false}
                     />
                 </View>
             </View>

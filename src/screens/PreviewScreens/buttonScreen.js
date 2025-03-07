@@ -51,21 +51,21 @@ const ButtonScreen = () => {
                         <CustomButton
                             text={"Primary"}
                             type={"primary"}
-                            size={4}
+                            size="lg"
                         />
                     </View>
                     <View style={{ width: 94 }}>
                         <CustomButton
                             text={"Primary"}
                             type={"primary"}
-                            size={3}
+                            size="md"
                         />
                     </View>
                     <View style={{ width: 94 }}>
                         <CustomButton
                             text={"Primary"}
                             type={"primary"}
-                            size={2}
+                            size="sm"
                         />
                     </View>
                 </View>
@@ -74,7 +74,7 @@ const ButtonScreen = () => {
                         <CustomButton
                             text={"Primary"}
                             type={"primary"}
-                            size={1}
+                            size="xs"
                         />
                     </View>
                 </View>
@@ -95,6 +95,7 @@ const ButtonScreen = () => {
                         <CustomButton
                             text={"Primary"}
                             type={"primary"}
+                            state="disabled"
                         />
                     </View>
                 </View>
@@ -103,21 +104,10 @@ const ButtonScreen = () => {
                         <CustomButton
                             text={"Primary"}
                             type={"primary"}
-                            disabled={true}
-                        />
-                    </View>
-                    <View style={styles.buttonWrapper}>
-                        <CustomButton
-                            text={"Primary"}
-                            type={"primary"}
-                            loading={true}
+                            state="loading"
                         />
                     </View>
                 </View>
-                <View style={styles.buttonRow}>
-
-                </View>
-                <View style={styles.buttonRow}></View>
             </View>
 
             {/* ICON */}
@@ -129,13 +119,13 @@ const ButtonScreen = () => {
                         text={"IconLeft"}
                         type={"primary"}
                         scaling='full'
-                        leftIcon={<CustomIcon fill={colors.white} />}
+                        iconLeft={<CustomIcon fill={colors.white} />}
                     />
                     <CustomButton
                         text={"iconRight"}
                         type={"primary"}
                         scaling='full'
-                        rightIcon={<CustomIcon fill={colors.white} />}
+                        iconRight={<CustomIcon fill={colors.white} />}
                     />
                 </View>
             </View>

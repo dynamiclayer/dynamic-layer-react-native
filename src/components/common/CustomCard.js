@@ -7,28 +7,30 @@ import { colors, paddings, rounded, textStyles } from "../../style";
  * A versatile card component that can be used to display content with an icon, title, and description.
  */
 const CustomCard = ({
-  iconSource = {}, // Icon source - can be an image or React component
+  icon = {}, // Icon source - can be an image or React component
   title,          // Card title
   description,    // Card description
   size = "md",    // Card size: "md" (medium) or "lg" (large)
   state = "default", // Card state: "active", "default", or "disabled"
-  showDescription = true, // Whether to show the description
   onPress         // Function to call when card is pressed
 }) => {
+  // Determine if description should be shown based on content
+  const shouldShowDescription = description !== undefined && description !== '';
+
   // Determine container style based on state and size
   // For active state, use active style; for default and disabled states, use disabled style
   const containerStyle =
   state === "active"
     ? size === "md"
       ? [styles.cardMdContainer, { borderWidth: 2, borderColor: colors.black }]
-      : [styles.cardLgContainer, !showDescription && { height: 92 }, { borderWidth: 2, borderColor: colors.black }]
+      : [styles.cardLgContainer, !shouldShowDescription && { height: 92 }, { borderWidth: 2, borderColor: colors.black }]
     : state === "default"
     ? size === "md"
       ? styles.cardMdContainer
-      : [styles.cardLgContainer, !showDescription && { height: 92 }]
+      : [styles.cardLgContainer, !shouldShowDescription && { height: 92 }]
     : size === "md"
     ? styles.cardMdDisabled
-    : [styles.cardLgDisabled, !showDescription && { height: 92 }];
+    : [styles.cardLgDisabled, !shouldShowDescription && { height: 92 }];
 
 
   // Apply text styles - strikethrough for disabled state only
@@ -36,10 +38,10 @@ const CustomCard = ({
   const descriptionStyle = [styles.description, state === "disabled" && styles.strikeThroughText];
   // Text wrapper styles for medium and large sizes
   const textWrapperStyle = size === "md" ? styles.textWrapperMd : styles.textWrapperLg;
-  // Handle icon - if iconSource is a React element, clone it and set color to black
-  const iconElement = React.isValidElement(iconSource)
-    ? React.cloneElement(iconSource, { color: colors.black })
-    : iconSource;
+  // Handle icon - if icon is a React element, clone it and set color to black
+  const iconElement = React.isValidElement(icon)
+    ? React.cloneElement(icon, { color: colors.black })
+    : icon;
     return (
       <Pressable style={containerStyle} onPress={onPress}>
         <View style={[styles.iconContainer, size === "lg" && { alignSelf: "flex-start" }]}>
@@ -49,7 +51,7 @@ const CustomCard = ({
           <Text style={[titleStyle, {ellipsizeMode: "tail"}]} numberOfLines={1}>
             {title}
           </Text>
-          {showDescription && (
+          {shouldShowDescription && (
             <Text style={descriptionStyle} numberOfLines={1}>
               {description}
             </Text>

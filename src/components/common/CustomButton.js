@@ -56,10 +56,10 @@ const stateStyles = {
 
 // Define styles for different button sizes
 const sizeStyles = {
-  1: { height: 32, paddingHorizontal: paddings.p_12 },
-  2: { height: 40, paddingHorizontal: paddings.p_16 },
-  3: { height: 48, paddingHorizontal: paddings.p_16 },
-  4: { height: 56, paddingHorizontal: paddings.p_24 },
+  xs: { height: 32, paddingHorizontal: paddings.p_12 },
+  sm: { height: 40, paddingHorizontal: paddings.p_16 },
+  md: { height: 48, paddingHorizontal: paddings.p_16 },
+  lg: { height: 56, paddingHorizontal: paddings.p_24 },
 };
 
 // Function to combine styles based on type, state, and size
@@ -82,17 +82,16 @@ const CustomButton = ({
   onPress,            // Function to call when the button is pressed
   text = "",          // Text to display on the button
   type = "primary", // Button type (primary, secondary, tertiary, ghost)
-  size = 4,           // Button size (1 to 4)
-  leftIcon,           // Icon to display on the left side of the button
-  rightIcon,          // Icon to display on the right side of the button
-  loading = false,    // Whether the button is in a loading state
-  disabled = false,   // Whether the button is disabled
+  size = "lg",        // Button size (xs, sm, md, lg)
+  iconLeft,           // Icon to display on the left side of the button
+  iconRight,          // Icon to display on the right side of the button
+  state = "default",  // Button state (default, disabled, loading)
   scaling = "full",   // Scaling option for the button
 }) => {
   // State to manage button state (default, pressed, etc.)
-  const [buttonState, setButtonState] = useState('default');
-  const state = loading ? 'loading' : (disabled ? 'disabled' : buttonState); // Determine the current state of the button
-  const combinedStyles = getCombinedStyles(type, state, size); // Get the combined styles based on type, state, and size
+  const [pressState, setPressState] = useState('default');
+  const currentState = state === 'default' ? pressState : state; // Use press state only when in default state
+  const combinedStyles = getCombinedStyles(type, currentState, size); // Get the combined styles based on type, state, and size
 
   // --------------------------------------------
   // Handlers for button press events
@@ -100,20 +99,20 @@ const CustomButton = ({
 
   // Set state to pressed when the button is pressed in
   const handlePressIn = () => {
-    if (!disabled && !loading) {
-      setButtonState('pressed');
+    if (state === 'default') {
+      setPressState('pressed');
     }
   };
 
   // Set state to default when the button is released
   const handlePressOut = () => {
-    if (!disabled && !loading) {
-      setButtonState('default');
+    if (state === 'default') {
+      setPressState('default');
     }
   };
 
   const handlePress = () => {
-    if (!disabled && !loading && onPress) {
+    if (state === 'default' && onPress) {
       onPress(); // Call the onPress function when the button is pressed
     }
   };
@@ -140,11 +139,11 @@ const CustomButton = ({
       onPress={handlePress}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
-      disabled={disabled || loading}
+      disabled={state === 'disabled' || state === 'loading'}
     >
       <View style={styles.contentContainer}>
-        {leftIcon && <View style={styles.iconLeft}>{leftIcon}</View>}
-        {loading ? (
+        {iconLeft && <View style={styles.iconLeft}>{iconLeft}</View>}
+        {state === 'loading' ? (
           <View style={styles.loadingContainer}>
             <LoadingDots />
           </View>
@@ -153,7 +152,7 @@ const CustomButton = ({
             {text}
           </Text>
         )}
-        {rightIcon && <View style={styles.iconRight}>{rightIcon}</View>}
+        {iconRight && <View style={styles.iconRight}>{iconRight}</View>}
       </View>
     </Pressable>
   );
