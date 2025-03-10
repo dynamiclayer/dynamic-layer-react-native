@@ -16,28 +16,28 @@ const InputFieldScreen = () => {
             </Text>
             <View style={[styles.inputContainer, styles.paddingBottom32]}>
                 <CustomInputField
-                    size="lg"
+                    size={"lg"}
                     placeholder={"Input Field"}
-                    type="default"
-                    state="default"
+                    type={"default"}
+                    state={"default"}
                 />
                 <CustomInputField
-                    size="lg"
+                    size={"lg"}
                     placeholder={"Input Field"}
-                    type="success"
-                    state="default"
+                    type={"success"}
+                    state={"default"}
                 />
                 <CustomInputField
-                    size="lg"
+                    size={"lg"}
                     placeholder={"Input Field"}
-                    type="default"
-                    state="disabled"
+                    type={"default"}
+                    state={"disabled"}
                 />
                 <CustomInputField
-                    size="lg"
+                    size={"lg"}
                     placeholder={"Input Field"}
-                    type="error"
-                    state="default"
+                    type={"error"}
+                    state={"default"}
                     error={"Description"}
                 />
             </View>
@@ -46,26 +46,26 @@ const InputFieldScreen = () => {
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
             </Text>
             <View style={[styles.inputContainer, styles.paddingBottom32]}>
-                <CustomInputField size="lg" placeholder={"Input Field"} />
-                <CustomInputField size="md" placeholder={"Input Field"} />
-                <CustomInputField size="sm" placeholder={"Input Field"} />
+                <CustomInputField size={"lg"} placeholder={"Input Field"} />
+                <CustomInputField size={"md"} placeholder={"Input Field"} />
+                <CustomInputField size={"sm"} placeholder={"Input Field"} />
             </View>
             <Text style={[textStyles.text_lg_semibold, styles.paddingBottom8]}>Icons</Text>
             <Text style={[textStyles.text_sm_regular, styles.greyText, styles.paddingBottom32]}>
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
             </Text>
             <View style={[styles.inputContainer, styles.paddingBottom32]}>
-                <CustomInputField size="lg" placeholder={"Input Field"} iconRight={<PlusIcon />} />
-                <CustomInputField size="lg" placeholder={"Input Field"} iconLeft={<PlusIcon />} />
+                <CustomInputField size={"lg"} placeholder={"Input Field"} iconRight={<PlusIcon />} />
+                <CustomInputField size={"lg"} placeholder={"Input Field"} iconLeft={<PlusIcon />} />
             </View>
             <Text style={[textStyles.text_lg_semibold, styles.paddingBottom8]}>States</Text>
             <Text style={[textStyles.text_sm_regular, styles.greyText, styles.paddingBottom32]}>
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
             </Text>
             <View style={[styles.inputContainer, styles.marginBottom32]}>
-                <CustomInputField size="lg" placeholder={"Input Field"} />
-                <CustomInputField size="lg" placeholder={"Input Field"} value={inputValue} onChange={(value) => setInputValue(value)}/>
-                <CustomInputField size="lg" placeholder={"Input Field"} value={inputValue} onChange={(value) => setInputValue(value)} isHighlighted={true} />
+                <CustomInputField size={"lg"} placeholder={"Input Field"} />
+                <CustomInputField size={"lg"} placeholder={"Input Field"} value={inputValue} onChange={(value) => setInputValue(value)}/>
+                <CustomInputField size={"lg"} placeholder={"Input Field"} value={inputValue} onChange={(value) => setInputValue(value)} isHighlighted={true} />
             </View>
         </ScrollView>
     );

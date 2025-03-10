@@ -13,10 +13,10 @@ const NotificationBadgeScreen = () => {
             </Text>
             <View style={styles.row}>
                 <View style={styles.autoWidth}>
-                    <CustomBadgeNotification size="md" notifications={5} positioning={false} position={"relative"}/> 
+                    <CustomBadgeNotification size={"md"} notifications={5} positioning={false} position={"relative"}/> 
                 </View>
                 <View style={styles.smallBadge}>
-                    <CustomBadgeNotification size="sm" notifications={3} position={"relative"}/>
+                    <CustomBadgeNotification size={"sm"} notifications={3} position={"relative"}/>
                 </View>
             </View>
         </ScrollView>

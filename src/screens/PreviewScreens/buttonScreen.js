@@ -51,21 +51,21 @@ const ButtonScreen = () => {
                         <CustomButton
                             text={"Primary"}
                             type={"primary"}
-                            size="lg"
+                            size={"lg"}
                         />
                     </View>
                     <View style={{ width: 94 }}>
                         <CustomButton
                             text={"Primary"}
                             type={"primary"}
-                            size="md"
+                            size={"md"}
                         />
                     </View>
                     <View style={{ width: 94 }}>
                         <CustomButton
                             text={"Primary"}
                             type={"primary"}
-                            size="sm"
+                            size={"sm"}
                         />
                     </View>
                 </View>
@@ -74,7 +74,7 @@ const ButtonScreen = () => {
                         <CustomButton
                             text={"Primary"}
                             type={"primary"}
-                            size="xs"
+                            size={"xs"}
                         />
                     </View>
                 </View>
@@ -95,7 +95,7 @@ const ButtonScreen = () => {
                         <CustomButton
                             text={"Primary"}
                             type={"primary"}
-                            state="disabled"
+                            state={"disabled"}
                         />
                     </View>
                 </View>
@@ -104,7 +104,7 @@ const ButtonScreen = () => {
                         <CustomButton
                             text={"Primary"}
                             type={"primary"}
-                            state="loading"
+                            state={"loading"}
                         />
                     </View>
                 </View>
@@ -118,7 +118,7 @@ const ButtonScreen = () => {
                     <CustomButton
                         text={"IconLeft"}
                         type={"primary"}
-                        scaling='full'
+                        scaling={"full"}
                         iconLeft={<CustomIcon fill={colors.white} />}
                     />
                     <CustomButton

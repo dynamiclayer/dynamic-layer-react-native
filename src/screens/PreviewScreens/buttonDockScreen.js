@@ -24,15 +24,15 @@ const ButtonDockScreen = () => {
                 </Text>
                 <View style={{ height: 89 }}>
                     <CustomButtonDock
-                        firstButton={<CustomButton text="Primary" type="primary" />}
+                        firstButton={<CustomButton text={"Primary"} type={"primary"} />}
                         style={{paddingBottom: 0}} // No need! Adds custom styling to the ButtonDock. (Just for the preview screen needed)
                     />
                 </View>
 
                 <View style={{ marginTop: paddings.p_16, marginBottom: paddings.p_32, height: 161 }}>
                     <CustomButtonDock
-                        firstButton={<CustomButton text="Primary" type="primary" />}
-                        secondButton={<CustomButton text="Secondary" type="secondary" />}
+                        firstButton={<CustomButton text={"Primary"} type={"primary"} />}
+                        secondButton={<CustomButton text={"Secondary"} type={"secondary"} />}
                         style={{paddingBottom: 0}} // No need! Adds custom styling to the ButtonDock. (Just for the preview screen needed)
                     />
                 </View>
@@ -50,9 +50,9 @@ const ButtonDockScreen = () => {
                 </Text>
                 <View style={{ height: 89 }}>
                     <CustomButtonDock
-                        direction="horizontal"
-                        firstButton={<CustomButton text="Primary" type="primary" />}
-                        secondButton={<CustomButton text="Secondary" type="secondary" />}
+                        direction={"horizontal"}
+                        firstButton={<CustomButton text={"Primary"} type={"primary"} />}
+                        secondButton={<CustomButton text={"Secondary"} type={"secondary"} />}
                         style={{paddingBottom: 0}}
                     />
                 </View>

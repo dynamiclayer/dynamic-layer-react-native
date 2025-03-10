@@ -23,15 +23,15 @@ const CustomCardScreen = () => {
                 <View style={styles.rowContainer}>
                     <CustomCard
                         icon={<PlaceholderIcon fill={colors.black} />}
-                        title="Title"
-                        description="Description"
-                        size="md"
+                        title={"Title"}
+                        description={"Description"}
+                        size={"md"}
                     />
                     <CustomCard
                         icon={<PlaceholderIcon fill={colors.black} />}
-                        title="Title"
-                        description="Description"
-                        size="lg"
+                        title={"Title"}
+                        description={"Description"}
+                        size={"lg"}
                     />
                 </View>
             </View>
@@ -51,24 +51,24 @@ const CustomCardScreen = () => {
                 <View style={styles.rowContainer}>
                         <CustomCard
                             icon={<PlaceholderIcon fill={colors.black} />}
-                            title="Title"
-                            description="Description"
-                            size="lg"
-                            state="active"
+                            title={"Title"}
+                            description={"Description"}
+                            size={"lg"}
+                            state={"active"}
                         />
                         <CustomCard
                             icon={<PlaceholderIcon fill={colors.black} />}
-                            title="Title"
-                            description="Description"
-                            size="lg"
-                            state="default"
+                            title={"Title"}
+                            description={"Description"}
+                            size={"lg"}
+                            state={"default"}
                         />
                         <CustomCard
                             icon={<PlaceholderIcon />}
-                            title="Title"
-                            description="Description"
-                            size="lg"
-                            state="disabled"
+                            title={"Title"}
+                            description={"Description"}
+                            size={"lg"}
+                            state={"disabled"}
                         />
                 </View>
             </View>

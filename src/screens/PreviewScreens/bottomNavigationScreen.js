@@ -63,7 +63,7 @@ const BottomNavigationScreen = () => {
 
         return (
             <CustomBottomNavigation
-                type="md"
+                type={"md"}
                 screens={screens}
                 functional={false}
             />
