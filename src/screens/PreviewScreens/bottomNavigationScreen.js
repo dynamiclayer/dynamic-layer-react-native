@@ -10,17 +10,17 @@ import TemplatesIcon from '../../../assets/icons/Navigation/templateIcon';
 
 const BottomNavigationScreen = () => {
 
-    const Tab = ({ type, focused, icon: IconComponent, notifications }) => {
+    const Tab = ({ badge, focused, icon: IconComponent, notifications }) => {
         return (
             <View style={styles.tabContainer}>
                 <IconComponent isHighlighted={focused} fill={focused ? colors.black : colors.grey500} />
-                {type === "md" && notifications > 0 && (
+                {badge === "md" && notifications > 0 && (
                     <View style={styles.notificationBadgeMD}>
                         <Text style={styles.notificationText}>{notifications}</Text>
                     </View>
                 )}
 
-                {type === "sm" && notifications > 0 && (
+                {badge === "sm" && notifications > 0 && (
                     <View style={styles.notificationBadgeSM} />
                 )}
 
@@ -63,7 +63,7 @@ const BottomNavigationScreen = () => {
 
         return (
             <CustomBottomNavigation
-                type={"md"}
+                badge={"md"}
                 screens={screens}
                 functional={false}
             />
@@ -76,18 +76,18 @@ const BottomNavigationScreen = () => {
             <Text style={{ ...textStyles.text_lg_semibold, paddingBottom: paddings.p_8 }}>Type</Text>
             <Text style={{ ...textStyles.text_sm_regular, color: colors.grey500, paddingBottom: paddings.p_32 }}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</Text>
             <View style={styles.buttonRow}>
-                <Tab type={"none"} focused={true} icon={CustomIcon} />
-                <Tab type={"sm"} focused={true} icon={CustomIcon} notifications={3} />
-                <Tab type={"md"} focused={true} icon={CustomIcon} notifications={5} />
+                <Tab badge={"none"} focused={true} icon={CustomIcon} />
+                <Tab badge={"sm"} focused={true} icon={CustomIcon} notifications={3} />
+                <Tab badge={"md"} focused={true} icon={CustomIcon} notifications={5} />
             </View>
 
             {/* TYPE UNFOCUSED */}
             <Text style={{ ...textStyles.text_lg_semibold, paddingBottom: paddings.p_8 }}>Type</Text>
             <Text style={{ ...textStyles.text_sm_regular, color: colors.grey500, paddingBottom: paddings.p_32 }}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</Text>
             <View style={styles.buttonRow}>
-                <Tab type={"none"} focused={false} icon={CustomIcon} />
-                <Tab type={"sm"} focused={false} icon={CustomIcon} notifications={3} />
-                <Tab type={"md"} focused={false} icon={CustomIcon} notifications={5} />
+                <Tab badge={"none"} focused={false} icon={CustomIcon} />
+                <Tab badge={"sm"} focused={false} icon={CustomIcon} notifications={3} />
+                <Tab badge={"md"} focused={false} icon={CustomIcon} notifications={5} />
             </View>
 
             {/* TYPE MIXED */}
