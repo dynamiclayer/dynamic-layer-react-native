@@ -69,12 +69,12 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.white,
     },
-    // contentContainerStyle des ScrollViews – wichtig: extra Padding am unteren Rand,
-    // damit der scrollbare Inhalt nicht vom Dock verdeckt wird.
+    // contentContainerStyle of the ScrollView – important: extra padding at the bottom edge,
+    // so that the scrollable content is not covered by the dock.
     scrollContent: {
         paddingHorizontal: paddings.p_16,
         paddingVertical: paddings.p_32,
-        paddingBottom: 89, // Hier evtl. anpassen, je nach Höhe deines Docks. Bei Horizontal mit dem Default button "89".
+        paddingBottom: 89, // Adjust here if necessary, depending on the height of your dock. For horizontal with the default button "89".
     },
     buttonContainer: {
         gap: paddings.p_16,

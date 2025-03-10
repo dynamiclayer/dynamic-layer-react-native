@@ -48,7 +48,7 @@ const tabScreens = [
 
 // Main Tab Navigation
 function MainTabScreen() {
-  return <CustomBottomNavigation type="md" screens={tabScreens} />;
+  return <CustomBottomNavigation badge="md" screens={tabScreens} />;
 }
 
 // Main Navigation

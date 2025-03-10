@@ -124,7 +124,7 @@ const ButtonScreen = () => {
                     <CustomButton
                         text={"iconRight"}
                         type={"primary"}
-                        scaling='full'
+                        scaling={"full"}
                         iconRight={<CustomIcon fill={colors.white} />}
                     />
                 </View>
