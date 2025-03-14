@@ -24,7 +24,6 @@ import TemplatesIcon from '../../assets/icons/Navigation/templateIcon';
 import SettingsIcon from '../../assets/icons/Navigation/settingsIcon';
 import BackIcon from '../../assets/icons/svg_js/backIcon';
 
-
 const MainStack = createNativeStackNavigator();
 
 // Navigation Options

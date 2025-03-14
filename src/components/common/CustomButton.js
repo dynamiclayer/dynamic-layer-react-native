@@ -22,12 +22,6 @@ const typeStyles = {
 
 // Define styles for different button states
 const stateStyles = {
-  default: {
-    primary: { backgroundColor: colors.violet500 },
-    secondary: { backgroundColor: colors.grey800 },
-    tertiary: { backgroundColor: colors.white, borderWidth: 1, borderColor: colors.grey200 },
-    ghost: { backgroundColor: colors.transparent, textColor: colors.violet500 },
-  },
   hover: {
     primary: { backgroundColor: colors.violet600 },
     secondary: { backgroundColor: colors.grey900 },
